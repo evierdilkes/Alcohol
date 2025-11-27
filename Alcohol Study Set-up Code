@@ -280,7 +280,7 @@ wave_9 <- i_indresp[, vars_i]
 
 # Wave 10
 wave_10 <- j_indresp[, vars_j]
-tavk
+
 # Wave 11
 wave_11 <- k_indresp[, vars_k]
 
