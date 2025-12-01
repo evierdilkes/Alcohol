@@ -131,7 +131,8 @@ vars_m <- c(
   "m_scsf1", "m_scsf2a", "m_scsf2b", "m_scsf3a", "m_scsf3b", "m_scsf4a", "m_scsf4b",
   "m_scsf5", "m_scsf6a", "m_scsf6b", "m_scsf6c", "m_scsf7","m_hcond1","m_hcond10","m_hcond11","m_hcond12","m_hcond13",
 "m_hcond14","m_hcond15","m_hcond16","m_hcond18","m_hcond19","m_hcond2","m_hcond3",
-"m_hcond4","m_hcond5","m_hcond6","m_hcond7","m_hcond8","m_hcond96",
+"m_hcond4","m_hcond5","m_hcond6","m_hcond7","m_hcond8","m_hcond96", "m_hcondnew22","m_hcondnew96","m_hcondnew8", "m_hcondnew7","m_hcondnew5","m_hcondnew4","m_hcondnew3","m_hcondnew2","m_hcondnew19","m_hcondnew16",
+"m_hcondnew15","m_hcondnew14","m_hcondnew13","m_hcondnew11","m_hcondnew1","m_hcondnew6","m_hcondnew21", "m_hcondnew12","m_hcondnew10",
   "m_sex", "m_sf12mcs_dv", "m_smoker", "m_vdmin", "m_wwmin", "m_ypnetcht",
   "m_ethn_dv", "m_urban_dv", 
   "m_agegr10_dv", "m_agegr5_dv", "m_hhsize", "m_hiqual_dv",
@@ -575,3 +576,11 @@ long_data$scdassat_dv[long_data$scdassat_dv %in% c(-9, -8, -7)] <- NA
 
 #NAing how often feel lonely
 long_data$sclonely[long_data$sclonely %in% c(-9, -8, -7, -2, -1)] <- NA
+
+# Find all variable names containing "m_hcondnew"
+hcondnew_vars <- grep("m_hcondnew", names(long_data), value = TRUE)
+
+# Replace values -8, -7, -2, -1 with NA across those variables
+for (var in hcondnew_vars) {
+  long_data[[var]][long_data[[var]] %in% c(-8, -7, -2, -1)] <- NA
+}
