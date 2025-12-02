@@ -1,0 +1,84 @@
+diabtes
+"hcondncode33" - Type 1 diabetes
+"hcondncode34" - Type 2 diabetes
+"hcondncode35" - gestational diabetes
+"hcondncode36" - other diabetes
+
+Mental health
+"hcondncode77" - any other emotional, nervoys, psychological conditions
+"hcondncode66" - a phobia
+"hcondncode67" - panic attacks 
+"hcondncode68" - ADHD
+"hcondncode69" - post-natal epression
+"hcondncode70" - dementia
+"hcondncode71" - nervous breakdown 
+"hcondncode72" - personality disorder
+"hcondncode73" - OCD
+"hcondncode74" - seasonal affective disorder 
+"hcondncode75" - alcohol / drug dependence
+"hcondncode76" - any other AD
+"hcondncode38" - depression
+"hcondncode39" - psychosis
+"hcondncode40" - bipolar or manic depression
+"hcondncode41" - eating disorder
+"hcondncode42" - PTSD
+
+
+Cancers
+"hcondncode27" - lung
+"hcondncode79" - blood / bone marrow
+"hcondncode26" - bowel / colorectal
+"hcondncode28" - breast
+"hcondncode30" - liver
+"hcondncode32" - other cancer
+"hcondncode29" - prostate
+"hcondncode31" - skin
+
+Arthritis
+"hcondncode23" - osteoarthritis
+"hcondncode24" - rheumatoid
+"hcondncode25" - other 
+
+breathing
+"hcondncode21" - COPD
+"hcondncode1" - asthma
+"hcondncode11" - chronic bronchitis
+
+Nerve disorders
+"hcondncode82" - motor neurone disease
+"hcondncode19" - multiple sclerosis
+"hcondncode15" - epilepsy
+"hcondncode81" - parkinsons
+
+heart/blood conditions
+"hcondncode16" - high blood pressure
+"hcondncode3" - congestive heart failure
+"hcondncode4" - coronary heart disease
+"hcondncode5" - angina
+"hcondncode6" - heart attack or myocardial infarction
+"hcondncode7" - stroke 
+
+kidneys
+"hcondncode80" - CKD
+
+?
+"hcondncode8"- emphysema
+"hcondncode96"- none of these
+"hcondncode97" - other long standing / chronic condition
+
+
+xlabblood_ns <- xlabblood_ns %>% select(-wave)
+long_data$alb[long_data$alb %in% c(-41, -22, -9] <- NA
+long_data$alkp[long_data$alkp %in% c(-41, -22, -9] <- NA
+long_data$alt[long_data$alt %in% c(-41, -22, -9] <- NA
+long_data$apoa1[long_data$apoa1 %in% c(-41, -22, -9] <- NA
+long_data$apob[long_data$apob %in% c(-41, -22, -9] <- NA
+long_data$apoe[long_data$apoe %in% c(-22, -8] <- NA
+long_data$ast[long_data$ast %in% c(-41, -22, -9] <- NA
+long_data$chol[long_data$chol %in% c(-41, -22, -9] <- NA
+long_data$dheas[long_data$dheas %in% c(-41, -32, -22, -9] <- NA
+long_data$ecre[long_data$ecre %in% c(-41, -22, -9] <- NA
+long_data$factorh[long_data$factorh %in% c(-41, -22, -9] <- NA
+long_data$factorh[long_data$factorh %in% c(-41, -31, -22, -9] <- NA
+
+
