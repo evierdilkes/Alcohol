@@ -68,17 +68,67 @@ kidneys
 
 
 xlabblood_ns <- xlabblood_ns %>% select(-wave)
-long_data$alb[long_data$alb %in% c(-41, -22, -9] <- NA
-long_data$alkp[long_data$alkp %in% c(-41, -22, -9] <- NA
-long_data$alt[long_data$alt %in% c(-41, -22, -9] <- NA
-long_data$apoa1[long_data$apoa1 %in% c(-41, -22, -9] <- NA
-long_data$apob[long_data$apob %in% c(-41, -22, -9] <- NA
-long_data$apoe[long_data$apoe %in% c(-22, -8] <- NA
-long_data$ast[long_data$ast %in% c(-41, -22, -9] <- NA
-long_data$chol[long_data$chol %in% c(-41, -22, -9] <- NA
-long_data$dheas[long_data$dheas %in% c(-41, -32, -22, -9] <- NA
-long_data$ecre[long_data$ecre %in% c(-41, -22, -9] <- NA
-long_data$factorh[long_data$factorh %in% c(-41, -22, -9] <- NA
-long_data$factorh[long_data$factorh %in% c(-41, -31, -22, -9] <- NA
+xlabblood_ns$alb[xlabblood_ns$alb %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$alkp[xlabblood_ns$alkp %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$alt[xlabblood_ns$alt %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$apoa1[xlabblood_ns$apoa1 %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$apob[xlabblood_ns$apob %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$apoe[xlabblood_ns$apoe %in% c(-22, -8)] <- NA
+xlabblood_ns$ast[xlabblood_ns$ast %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$chol[xlabblood_ns$chol %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$dheas[xlabblood_ns$dheas %in% c(-41, -32, -22, -9)] <- NA
+xlabblood_ns$ecre[xlabblood_ns$ecre %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$ggt[xlabblood_ns$ggt %in% c(-41, -31, -22, -9)] <- NA
+xlabblood_ns$hba1c[xlabblood_ns$hba1c %in% c(-42, -9)] <- NA
+xlabblood_ns$hdl[xlabblood_ns$hdl %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$hdl[xlabblood_ns$hdl %in% c(-41, -31, -22, -9)] <- NA
+xlabblood_ns$igfi[xlabblood_ns$igfi %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$rtin[xlabblood_ns$rtin %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$shbg[xlabblood_ns$shbg %in% c(-45, -22, -44, -8)] <- NA
+xlabblood_ns$testo[xlabblood_ns$testo %in% c(-41, -31, -22, -9)] <- NA
+xlabblood_ns$trig[xlabblood_ns$trig %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$ure[xlabblood_ns$ure %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$hgb[xlabblood_ns$hgb %in% c(-42, -9)] <- NA
+xlabblood_ns$cfib[xlabblood_ns$cfib %in% c(-43, -22, -9)] <- NA
+xlabblood_ns$uscmg[xlabblood_ns$uscmg %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$cmvavc[xlabblood_ns$cmvavc %in% c(-9, -8)] <- NA
+xlabblood_ns$factorh[xlabblood_ns$factorh %in% c(-41, -31, -22, -9)] <- NA
+
+xindresp_ns2 <- xindresp_ns %>% select(pidp, ompulval, omdiaval, omsysval, estht, medcnj,bmivg5, wtval, confage)
+biomarkers <- merge(xlabblood_ns, xindresp_ns2, by = "pidp")
+biomarkers$dheas[biomarkers$dheas == -31] <- NA
+biomarkers$hscrp[biomarkers$hscrp %in% c(-41, -31, -22, -9)] <- NA
+biomarkers$cfib[biomarkers$cfib == -31] <- NA
+biomarkers$omdiaval[biomarkers$omdiaval == -8] <- NA
+biomarkers$omsysval[biomarkers$omsysval == -8] <- NA
+biomarkers$ompulval[biomarkers$ompulval == -8] <- NA
+biomarkers$wtval[biomarkers$wtval == -8] <- NA
+
+
+albumin g/l
+alkaline phosphatase u/l
+apolipoprotein A1 g/l
+apolipoprotein B g/l
+aolipoprotein E g/l 
+aspartate transaminase u/l 
+cholesterol total mmol/l
+didehydrieandresterone sulphate umol/l
+creatinine enzymatic umol/l
+complement factor H g/l 
+gamma glutamyltransferase u/l 
+hycated hemoglobin ifcc standardised mmol/mol hb
+high-density lipoprotein cholesterol mmol/l 
+creactive protein high sense mg/l 
+insulin like growth factor 1 ids method nmol/l
+ferritin ug/l 
+sex hormone-binding globulin g/l 
+testosterone nmol/l 
+triclycerides unfasted mmol/l
+urea mmol/l 
+haemoglobin g/l 
+clauss fibrinogen g/l 
+cytomegalovirus igg 
+cytomegalovirus igm 
+cytomegalovirus avidity test results 
 
 
