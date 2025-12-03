@@ -1,3 +1,15 @@
+######## WAVE 2/3 VARIABLES
+pidp
+wave
+ompulval
+omdiaval
+omsysval
+wstral
+estht
+b_medcnj
+b_bmivg5
+
+
 ######## WAVE 6 VARIABLES
 
 vars_f <- c(
@@ -250,10 +262,30 @@ vars_n <- c(
 "n_hcondncode42",
 "n_hcondncode5",
 "n_hcondncode6",
+"n_hcondncode66",
+"n_hcondncode67",
 "n_hcondncode7",
+"n_hcondncode77",
+"n_hcondcode69",
+"n_hcondcode70",
+"n_hcondcode71", 
+"n_hcondcode74", 
+"n_hcondcode75", 
+"n_hcondcode76", 
+"n_hcondncode38",
+"n_hcondcode72", 
+"n_hcondcode73",
+"n_hcondncode39", 
+"n_hcondncode40",
+"n_hcondcode41",
+"n_hcondcode42",
 "n_hcondncode8",
 "n_hcondncode96",
 "n_hcondncode97",
+"n_hcondncode68",
+"n_hcondncode79",
+"n_hcondncode82",
+"n_hcondncode81",
 "n_hcondnew1",         "n_hcondnew2",         "n_hcondnew3"  ,       "n_hcondnew4",         "n_hcondnew5",         "n_hcondnew6",        
 "n_hcondnew7",         "n_hcondnew8" ,        "n_hcondnew11"     ,   "n_hcondnew21"    ,    "n_hcondnew28"    ,    "n_hcondnew10"    ,   
 "n_hcondnew12",        "n_hcondnew13" ,       "n_hcondnew14"   ,     "n_hcondnew15"  ,      "n_hcondnew16"     ,   "n_hcondnew19"      , 
@@ -297,7 +329,8 @@ wave_14 <- n_indresp[, vars_n]
 
 ########## ONLY 30-39
 
-wave_7 <- wave_7[wave_7$g_agegr10_dv == 4, ]
+wave_7 <- wave_7[wave_7$g_agegr5_dv == 5 & 6 & 7, ]
+wave_7$g_agegr5_dv[wave_7$g_agegr5_dv %in% c(-9, -8, -7)] <- NA
 
 # Step 1: Extract pidps from wave_7
 common_pidps <- wave_7$pidp
