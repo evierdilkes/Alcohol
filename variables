@@ -94,7 +94,7 @@ xlabblood_ns$uscmg[xlabblood_ns$uscmg %in% c(-41, -22, -9)] <- NA
 xlabblood_ns$cmvavc[xlabblood_ns$cmvavc %in% c(-9, -8)] <- NA
 xlabblood_ns$factorh[xlabblood_ns$factorh %in% c(-41, -31, -22, -9)] <- NA
 
-xindresp_ns2 <- xindresp_ns %>% select(pidp, ompulval, omdiaval, omsysval, estht, medcnj,bmivg5, wtval, confage)
+xindresp_ns2 <- xindresp_ns %>% select(pidp, ompulval, omdiaval, omsysval, estht, medcnj,bmivg5, wtval, confage, nsex, sex_dv, wstval, htval)
 biomarkers <- merge(xlabblood_ns, xindresp_ns2, by = "pidp")
 biomarkers$dheas[biomarkers$dheas == -31] <- NA
 biomarkers$hscrp[biomarkers$hscrp %in% c(-41, -31, -22, -9)] <- NA
@@ -103,6 +103,15 @@ biomarkers$omdiaval[biomarkers$omdiaval == -8] <- NA
 biomarkers$omsysval[biomarkers$omsysval == -8] <- NA
 biomarkers$ompulval[biomarkers$ompulval == -8] <- NA
 biomarkers$wtval[biomarkers$wtval == -8] <- NA
+biomarkers$nsex[biomarkers$nsex == -9] <- NA
+biomarkers$wstval[biomarkers$wstval == -8] <- NA
+biomarkers$htval[biomarkers$htval == -8] <- NA
+biomarkers$CRP_clean <- pmin(biomarkers$hscrp, 100)
+biomarkers$trig[biomarkers$trig == 30.5] <- NA
+biomarkers$trig[biomarkers$trig == 31.9] <- NA
+biomarkers$chol[biomarkers$chol == 12.5] <- NA
+biomarkers$TC_HDL_ratio <- biomarkers$chol / biomarkers$hdl
+
 
 
 albumin g/l
@@ -113,7 +122,6 @@ aolipoprotein E g/l
 aspartate transaminase u/l 
 cholesterol total mmol/l
 didehydrieandresterone sulphate umol/l
-creatinine enzymatic umol/l
 complement factor H g/l 
 gamma glutamyltransferase u/l 
 hycated hemoglobin ifcc standardised mmol/mol hb
@@ -130,5 +138,38 @@ clauss fibrinogen g/l
 cytomegalovirus igg 
 cytomegalovirus igm 
 cytomegalovirus avidity test results 
+BMI 
+systolic blood pressure
+diastolic blood pressure 
+pulse 
+creatinine clearance
+
+NOTE TO SELF — HOW I CALCULATED CREATININE CLEARANCE (CrCl)
+
+I used the Cockcroft–Gault equation because Understanding Society provides serum creatinine, age, sex, and weight, but no urine samples, so true creatinine clearance cannot be measured directly.
+
+Creatinine was in µmol/L, and weight (wtval) was already in kilograms, which matches the equation requirements.
+
+Sex was coded as 1 = male, 2 = female, so I applied the standard Cockcroft–Gault sex coefficients:
+
+1.23 for males (reflecting higher muscle mass)
+
+1.04 for females
+
+Final formula I used:
+
+𝐶𝑟𝐶𝑙=(140−age)×weight (kg)×𝑓serum creatinine (µmol/L)CrCl=serum creatinine (µmol/L)(140−age)×weight (kg)×f
+	​
 
 
+where 
+𝑓
+=
+1.23
+f=1.23 for men and 
+𝑓
+=
+1.04
+f=1.04 for women.
+
+This yields estimated creatinine clearance in mL/min, which I then used as the renal biomarker in my allostatic load index.
