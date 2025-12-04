@@ -327,10 +327,9 @@ wave_13 <- m_indresp[, vars_m]
 wave_14 <- n_indresp[, vars_n]
 
 
-########## ONLY 30-39
+########## ONLY 30-44
 
-wave_7 <- wave_7[wave_7$g_agegr5_dv == 5 & 6 & 7, ]
-wave_7$g_agegr5_dv[wave_7$g_agegr5_dv %in% c(-9, -8, -7)] <- NA
+wave_7 <- wave_7[wave_7$g_agegr5_dv %in% c(5, 6, 7, 8), ]
 
 # Step 1: Extract pidps from wave_7
 common_pidps <- wave_7$pidp
@@ -422,8 +421,6 @@ long_data$fimngrs_dv[long_data$fimngrs_dv == -8] <- NA
 long_data$fimngrs_dv[long_data$fimngrs_dv == -2] <- NA
 long_data$fimngrs_dv[long_data$fimngrs_dv == -1] <- NA
 
-
-long_data$GHQ_total <- long_data$scghqa + long_data$scghqb + long_data$scghqc + long_data$scghqd + long_data$scghqe + long_data$scghqf + long_data$scghqg + long_data$scghqh + long_data$scghqi + long_data$scghqj + long_data$scghqk + long_data$scghql
 
 #### NAing for GHQ: concentration
 long_data$scghqa[long_data$scghqa == -9] <- NA
@@ -525,6 +522,8 @@ long_data$scsf2a[long_data$scsf2a == -7] <- NA
 long_data$scsf2a[long_data$scsf2a == -2] <- NA
 long_data$scsf2a[long_data$scsf2a == -1] <- NA
 
+long_data$GHQ_total <- long_data$scghqa + long_data$scghqb + long_data$scghqc + long_data$scghqd + long_data$scghqe + long_data$scghqf + long_data$scghqg + long_data$scghqh + long_data$scghqi + long_data$scghqj + long_data$scghqk + long_data$scghql
+long_data$GHQ_total <- long_data$GHQ_total - 12
 
 #### NAing for Health limits flights of stairs
 long_data$scsf2b[long_data$scsf2b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
@@ -617,3 +616,5 @@ hcondnew_vars <- grep("m_hcondnew", names(long_data), value = TRUE)
 for (var in hcondnew_vars) {
   long_data[[var]][long_data[[var]] %in% c(-8, -7, -2, -1)] <- NA
 }
+
+
