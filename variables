@@ -112,6 +112,63 @@ biomarkers$trig[biomarkers$trig == 31.9] <- NA
 biomarkers$chol[biomarkers$chol == 12.5] <- NA
 biomarkers$TC_HDL_ratio <- biomarkers$chol / biomarkers$hdl
 
+high_risk_higher <- c(
+  "omsysval", "omdiaval", "ompulval",
+  "WHtR", "hba1c", "trig", "CRP_clean", "cfib", "rtin", "TC_HDL_ratio"
+  # add "TC_HDL_ratio" ONLY if using it instead of TC & HDL separately
+)
+
+high_risk_lower <- c(
+"dheas", "igfi", "CrCl"
+)
+
+
+# For biomarkers where HIGH = bad
+for (var in high_risk_higher) {
+  
+  # Calculate 75th percentile cut-off
+  cutoff <- quantile(biomarkers[[var]], probs = 0.75, na.rm = TRUE)
+  
+  # Create binary variable var_highrisk
+  biomarkers[[paste0(var, "_highrisk")]] <- ifelse(biomarkers[[var]] >= cutoff, 1, 0)
+}
+
+# For biomarkers where LOW = bad
+for (var in high_risk_lower) {
+  
+  # Calculate 25th percentile cut-off
+  cutoff <- quantile(biomarkers[[var]], probs = 0.25, na.rm = TRUE)
+  
+  # Create binary variable var_highrisk
+  biomarkers[[paste0(var, "_highrisk")]] <- ifelse(biomarkers[[var]] <= cutoff, 1, 0)
+}
+
+
+### -------------------------
+### 3. CREATE TOTAL ALLOSTATIC LOAD SCORE
+### -------------------------
+
+# Find all new high-risk variables
+highrisk_vars <- grep("_highrisk$", names(biomarkers), value = TRUE)
+
+# Sum them into an AL score
+biomarkers$AL_total <- rowSums(biomarkers[highrisk_vars], na.rm = TRUE)
+
+
+biomarkers_AL <- biomarkers[, c("pidp", "AL_total")]
+
+long_data <- merge(long_data, biomarkers_AL, by = "pidp", all.x = TRUE)
+
+mdmin
+mday
+wday
+
+
+####### below is me trying out different analyses types
+long_data_ALNA <- long_data[!is.na(long_data$AL_total), ]
+model_data <- long_data %>% 
+  select(all.vars(formula(AL_wave_GHQ)), indinus_lw) %>% 
+  na.omit()
 
 
 albumin g/l
@@ -173,3 +230,6 @@ f=1.23 for men and
 f=1.04 for women.
 
 This yields estimated creatinine clearance in mL/min, which I then used as the renal biomarker in my allostatic load index.
+
+
+The total cholesterol to HDL ratio was calculated by dividing total cholesterol (mmol/L) by HDL cholesterol (mmol/L). Higher values indicate greater cardiometabolic risk. High-risk was defined as values in the highest quartile of the distribution.
