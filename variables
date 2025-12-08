@@ -157,16 +157,18 @@ biomarkers$AL_total <- rowSums(biomarkers[highrisk_vars], na.rm = TRUE)
 
 biomarkers_AL <- biomarkers[, c("pidp", "AL_total")]
 
-long_data <- merge(long_data, biomarkers_AL, by = "pidp", all.x = TRUE)
-
-mdmin
-mday
-wday
+long_data_all <- merge(long_data, biomarkers_AL, by = "pidp", all.x = TRUE)
 
 
 ####### below is me trying out different analyses types
 long_data_ALNA <- long_data[!is.na(long_data$AL_total), ]
 model_data <- long_data %>% 
+  select(all.vars(formula(AL_wave_GHQ)), indinus_lw) %>% 
+  na.omit()
+
+####### below is me trying out different analyses types for all age ranges rather than young adulthood only
+long_data_ALNA_all <- long_data_all[!is.na(long_data_all$AL_total), ]
+model_data <- long_data_all %>% 
   select(all.vars(formula(AL_wave_GHQ)), indinus_lw) %>% 
   na.omit()
 
