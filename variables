@@ -123,6 +123,7 @@ high_risk_lower <- c(
 )
 
 
+
 # For biomarkers where HIGH = bad
 for (var in high_risk_higher) {
   
@@ -235,3 +236,31 @@ This yields estimated creatinine clearance in mL/min, which I then used as the r
 
 
 The total cholesterol to HDL ratio was calculated by dividing total cholesterol (mmol/L) by HDL cholesterol (mmol/L). Higher values indicate greater cardiometabolic risk. High-risk was defined as values in the highest quartile of the distribution.
+
+# z-scores
+# Example: baseline biomarker data
+bio_base <- biomarkers[, c("pidp",
+                               "omsysval", "omdiaval", "ompulval",
+  "WHtR", "hba1c", "trig", "CRP_clean", "cfib", "rtin", "TC_HDL_ratio", "dheas", "igfi", "CrCl")]
+
+bio_z <- bio_base
+
+vars_bio <- c("omsysval", "omdiaval", "ompulval",
+  "WHtR", "hba1c", "trig", "CRP_clean", "cfib", "rtin", "TC_HDL_ratio", "dheas", "igfi", "CrCl")
+
+bio_z[vars_bio] <- lapply(bio_z[vars_bio], scale)   # mean 0, SD 1
+
+bio_z$dheas   <- -bio_z$dheas
+bio_z$igfi   <- -bio_z$igfi
+bio_z$CrCl   <- -bio_z$CrCl
+
+bio_z$AL_cont <- rowMeans(bio_z[vars_bio], na.rm = TRUE)
+
+# Optional: standardise the AL score itself for easier interpretation
+bio_z$AL_cont_z <- as.numeric(scale(bio_z$AL_cont))
+
+long_data_ALNA_all <- merge(long_data_ALNA_all,
+                            bio_z[, c("pidp", "AL_cont_z")],
+                            by = "pidp",
+                            all.x = TRUE)
+
