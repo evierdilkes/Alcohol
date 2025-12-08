@@ -264,3 +264,12 @@ long_data_ALNA_all <- merge(long_data_ALNA_all,
                             by = "pidp",
                             all.x = TRUE)
 
+
+#AGE
+> age_data <- xindresp_ns[, c("pidp", "confage")]
+> long_data_ALNA_all <- merge(
++ long_data_ALNA_all,
++ age_data,
++ by = "pidp",
++ all.x = TRUE
++ )
