@@ -1,28 +1,21 @@
 ######## WAVE 2/3 VARIABLES
-pidp
-wave
-ompulval
-omdiaval
-omsysval
-wstral
-estht
-b_medcnj
-b_bmivg5
+vars_c <- c(
+  "pidp",
+  "c_sexuor")
 
 
 ######## WAVE 6 VARIABLES
-
 vars_f <- c(
   "pidp",
   "f_closenum", "f_employ", "f_fimngrs_dv", "f_scghqa", "f_scghqb", "f_scghqc", "f_scghqd",
   "f_scghqe", "f_scghqf", "f_scghqg", "f_scghqh", "f_scghqi", "f_scghqj", "f_scghqk", "f_scghql",
   "f_scsf1", "f_scsf2a", "f_scsf2b", "f_scsf3a", "f_scsf3b", "f_scsf4a", "f_scsf4b",
   "f_scsf5", "f_scsf6a", "f_scsf6b", "f_scsf6c", "f_scsf7", "f_sex", "f_sf12mcs_dv",
-  "f_smoker", "f_ethn_dv", "f_urban_dv", "f_indinus_lw"
+  "f_smoker", "f_ethn_dv", "f_urban_dv", "f_indinus_lw", "f_nbrsnci_dv", "f_jbsec", 
+"f_scopngbha", "f_mastat_dv"
 )
 
 ######## WAVE 7 VARIABLES
-
 vars_g <- c(
   "pidp",
   "g_auditc1", "g_auditc2", "g_auditc3", "g_auditc4", "g_auditc5",
@@ -36,12 +29,12 @@ vars_g <- c(
 "g_hcond14","g_hcond15","g_hcond16","g_hcond18","g_hcond19","g_hcond2","g_hcond3",
 "g_hcond4","g_hcond5","g_hcond6","g_hcond7","g_hcond8","g_hcond9","g_hcond96",
  "g_ethn_dv", "g_urban_dv", "g_wkfruit",   "g_agegr10_dv", "g_agegr5_dv", 
-"g_hhsize", "g_hiqual_dv", "g_indinus_lw","g_scdascoh_dv", "g_scdassat_dv", "g_sclfsat1"
+"g_hhsize", "g_hiqual_dv", "g_indinus_lw","g_scdascoh_dv", "g_scdassat_dv", "g_sclfsat1", 
+"g_mdmin", "g_mday", "g_wday", "g_slp_qual", "g_wkvege", 
+"g_mastat_dv"
 )
 
-
 ######## WAVE 8 VARIABLES
-
 vars_h <- c(
   "pidp",
   "h_employ", "h_fimngrs_dv", "h_hl2gp", 
@@ -53,12 +46,11 @@ vars_h <- c(
   "h_ypnetcht", "h_hcond1","h_hcond10","h_hcond11","h_hcond12","h_hcond13",
 "h_hcond14","h_hcond15","h_hcond16","h_hcond18","h_hcond19","h_hcond2","h_hcond3",
 "h_hcond4","h_hcond5","h_hcond6","h_hcond7","h_hcond8","h_hcond9","h_hcond96",
-  "h_ethn_dv", "h_urban_dv", "h_agegr10_dv", "h_agegr5_dv", "h_hhsize", "h_hiqual_dv", "h_indinus_lw"
+  "h_ethn_dv", "h_urban_dv", "h_agegr10_dv", "h_agegr5_dv", "h_hhsize", "h_hiqual_dv", "h_indinus_lw", 
+"h_jbsec", "h_mastat_dv"
 )
 
-
 ######## WAVE 9 VARIABLES
-
 vars_i <- c(
   "pidp",
   "i_auditc1", "i_auditc2", "i_auditc3", "i_auditc4", "i_auditc5", "i_closenum",
@@ -73,13 +65,13 @@ vars_i <- c(
 "i_hcond4","i_hcond5","i_hcond6","i_hcond7","i_hcond8","i_hcond9","i_hcond96",
   "i_ethn_dv", "i_urban_dv",
   "i_agegr10_dv", "i_agegr5_dv", "i_hhsize", "i_hiqual_dv",
-  "i_indinus_lw", "i_scdascoh_dv", "i_scdassat_dv", "i_sclfsat1", "i_sclonely"
+  "i_indinus_lw", "i_scdascoh_dv", "i_scdassat_dv", "i_sclfsat1", "i_sclonely", 
+"i_mdmin", "i_mday", "i_wday", "i_nbrsnci_dv", "i_sclackcom", "i_scisolate", 
+"i_wkvege", "i_scopngbha", "i_mastat_dv"
 )
 
 
 ######## WAVE 10 VARIABLES
-
-
 vars_j <- c(
   "pidp",
   "j_employ", "j_fimngrs_dv", "j_hl2gp", "j_hrs_slph",
@@ -90,15 +82,13 @@ vars_j <- c(
 "j_hcond1","j_hcond10","j_hcond11","j_hcond12","j_hcond13",
 "j_hcond14","j_hcond15","j_hcond16","j_hcond18","j_hcond19","j_hcond2","j_hcond3",
 "j_hcond4","j_hcond5","j_hcond6","j_hcond7","j_hcond8","j_hcond96",
-  "j_sex", "j_sf12mcs_dv", "j_smoker", "j_swemwbs_dv", "j_ypnetcht", "j_sclfsat1", "j_sclonely",
-  "j_ethn_dv", "j_urban_dv", "j_agegr10_dv", "j_agegr5_dv", "j_hhsize", "j_hiqual_dv", "j_indinus_lw"
+  "j_sex", "j_sf12mcs_dv", "j_smoker", "j_swemwbs_dv", "j_ypnetcht", "j_sclfsat1",
+  "j_ethn_dv", "j_urban_dv", "j_agegr10_dv", "j_agegr5_dv", "j_hhsize", "j_hiqual_dv", "j_indinus_lw", "j_sclackcom", 
+"j_scisolate", "j_sclonely", "j_slp_qual", "j_jbsec", j_mastat_dv"
 )
 
 ######## WAVE 11 VARIABLES
-
-vars_k <- c(
-  "pidp",
-  "k_auditc1", "k_auditc2", "k_auditc3", "k_auditc4", "k_auditc5",
+vars_k <- c("pidp", "k_auditc1", "k_auditc2", "k_auditc3", "k_auditc4", "k_auditc5",
   "k_employ", "k_fimngrs_dv", "k_hl2gp",
   "k_scghqa", "k_scghqb", "k_scghqc", "k_scghqd", "k_scghqe", "k_scghqf", "k_scghqg",
   "k_scghqh", "k_scghqi", "k_scghqj", "k_scghqk", "k_scghql",
@@ -110,15 +100,15 @@ vars_k <- c(
   "k_sex", "k_sf12mcs_dv", "k_smoker", "k_vdmin", "k_wwmin", "k_ypnetcht",
   "k_ethn_dv", "k_urban_dv",
   "k_agegr10_dv", "k_agegr5_dv", "k_hhsize", "k_hiqual_dv",
-  "k_indinus_lw", "k_scdascoh_dv", "k_scdassat_dv", "k_sclfsat1", "k_sclonely"
+  "k_indinus_lw", "k_scdascoh_dv", "k_scdassat_dv", "k_sclfsat1", 
+"k_mdmin", "k_mday", "k_wday", "k_smlook", "k_sclackcom", "k_scisolate", "k_sclonely", 
+"k_wkvege", "k_mastat_dv"
 )
 
 
 ######## WAVE 12 VARIABLES
 
-vars_l <- c(
-  "pidp",
-  "l_auditc1", "l_auditc2", "l_auditc3", "l_auditc4", "l_auditc5",
+vars_l <- c("pidp", "l_auditc1", "l_auditc2", "l_auditc3", "l_auditc4", "l_auditc5",
   "l_employ", "l_fimngrs_dv", "l_hl2gp",
   "l_scghqa", "l_scghqb", "l_scghqc", "l_scghqd", "l_scghqe", "l_scghqf", "l_scghqg",
   "l_scghqh", "l_scghqi", "l_scghqj", "l_scghqk", "l_scghql",
@@ -126,14 +116,14 @@ vars_l <- c(
   "l_scsf5", "l_scsf6a", "l_scsf6b", "l_scsf6c", "l_scsf7", "l_hcond1","l_hcond10","l_hcond11","l_hcond12","l_hcond13",
 "l_hcond14","l_hcond15","l_hcond16","l_hcond18","l_hcond19","l_hcond2","l_hcond3",
 "l_hcond4","l_hcond5","l_hcond6","l_hcond7","l_hcond8","l_hcond96",
-  "l_sex", "l_sf12mcs_dv", "l_smoker", "l_ypnetcht", "l_sclfsat1", "l_sclonely",
+  "l_sex", "l_sf12mcs_dv", "l_smoker", "l_ypnetcht", "l_sclfsat1",
   "l_ethn_dv", "l_urban_dv", "l_agegr10_dv", "l_agegr5_dv", "l_hhsize", "l_hiqual_dv",
-  "l_indinus_lw"
+  "l_indinus_lw", "l_mdmin", "l_mday", "l_wday", "l_smlook", "l_nbrsnci_dv", 
+"l_sclackcom", "l_scisolate", "l_sclonely", "l_sclfsat3", "l_jbsec", "l_scopngbha", 
+"l_mastat_dv"
 )
 
-
 ######## WAVE 13 VARIABLES
-
 vars_m <- c(
   "pidp",
   "m_auditc1", "m_auditc2", "m_auditc3", "m_auditc4", "m_auditc5",
@@ -148,17 +138,18 @@ vars_m <- c(
   "m_sex", "m_sf12mcs_dv", "m_smoker", "m_vdmin", "m_wwmin", "m_ypnetcht",
   "m_ethn_dv", "m_urban_dv", 
   "m_agegr10_dv", "m_agegr5_dv", "m_hhsize", "m_hiqual_dv",
-  "m_indinus_lw", "m_scdascoh_dv", "m_scdassat_dv", "m_sclfsat1", "m_sclonely"
+  "m_indinus_lw", "m_scdascoh_dv", "m_scdassat_dv", "m_sclfsat1", "m_mdmin", "m_mday", "m_wday",
+"m_smlook", "m_sclackcom", "m_scisolate", "m_sclonely", "m_slp_qual", "m_hrs_slph", 
+"m_wkvege", "m_sclfsat3", "m_mastat_dv"
 )
-
-
 
 ######## WAVE 14 VARIABLES
 vars_n <- c(
   "pidp",
   "n_employ", "n_fimngrs_dv", "n_hl2gp",
   "n_scghqa", "n_scghqb", "n_scghqc", "n_scghqd", "n_scghqe", "n_scghqf", "n_scghqg",
-  "n_scghqh", "n_scghqi", "n_scghqj", "n_scghqk", "n_scghql",
+  "n_scghqh", "n_scghqi", "n_scghqj", "n_scghqk", "n_scghql", "n_sclackcom", "n_scisolate", 
+"n_sclonely", "n_sclfsat3", "n_jbsec", "n_mastat_dv",
   "n_scsf1", "n_scsf2a", "n_scsf2b", "n_scsf3a", "n_scsf3b", "n_scsf4a", "n_scsf4b",
   "n_scsf5", "n_scsf6a", "n_scsf6b", "n_scsf6c", "n_scsf7", "n_hcond1",
 "n_hcond10",
@@ -293,7 +284,7 @@ vars_n <- c(
  "n_hcondnew96",
   "n_sex", "n_sf12mcs_dv", "n_smoker",
   "n_ethn_dv", "n_urban_dv", "n_agegr10_dv", "n_agegr5_dv", "n_hhsize", "n_hiqual_dv",
-  "n_indinus_lw", "n_sclfsat1", "n_sclonely"
+  "n_indinus_lw", "n_sclfsat1", "n_smlook"
 )
 
 ########### CREATING THE DATASETS
