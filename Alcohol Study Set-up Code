@@ -609,3 +609,8 @@ for (var in hcondnew_vars) {
 }
 
 
+long_data$ethn_dv[long_data$ethn_dv %in% c(-9)] <- NA
+long_data$ethn_dv[long_data$ethn_dv %in% c(97)] <- 18
+long_data$sex[long_data$sex %in% c(-9)] <- NA
+long_data$sclfsat1[long_data$sclfsat1 %in% c(-9, -8, -7, -2, -1)] <- NA
+
