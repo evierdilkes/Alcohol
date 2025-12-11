@@ -273,3 +273,163 @@ long_data_ALNA_all <- merge(long_data_ALNA_all,
 + by = "pidp",
 + all.x = TRUE
 + )
+
+
+
+
+
+
+library(dplyr)
+library(tidyr)
+data_health <- long_data %>%
+  filter(wave %in% 10:15)
+condition_vars <- grep("^hcondncode", names(data_health), value = TRUE)
+condition_vars <- c(condition_vars, "no_reported_illness")
+ever_conditions <- data_health %>%
+  group_by(pidp) %>%
+  summarise(across(all_of(condition_vars),
+                   ~ ifelse(any(. == 1, na.rm = TRUE), 1, 0),
+                   .names = "{.col}_ever"))
+
+
+# 1. PREPARE MENTAL HEALTH DIAGNOSIS VARIABLES
+###############################################################################
+
+# long_data must already be loaded in the environment
+# long_data contains multiple waves per pidp
+
+# Mental health diagnosis variables used in LCA
+mh_vars <- c(
+  "dep", "psychosis", "bipolar", "eating_dis",
+  "phobia", "panic", "adhd", "ptsd", "sud",
+  "sad", "ocd", "personality", "nervous_break"
+)
+
+# Ensure all MH vars are binary 0/1
+long_data[mh_vars] <- lapply(long_data[mh_vars], function(x) ifelse(x == 1, 1, 0))
+
+###############################################################################
+# 2. REDUCE TO ONE ROW PER PERSON FOR LCA (diagnosis EVER)
+###############################################################################
+
+domain_data <- long_data %>%
+  group_by(pidp) %>%
+  summarise(across(all_of(mh_vars), ~ ifelse(any(. == 1, na.rm = TRUE), 1, 0))) %>%
+  ungroup()
+
+###############################################################################
+# 3. PREPARE DATA FOR poLCA (requires 1/2 coding instead of 0/1)
+###############################################################################
+
+lca_df <- domain_data %>%
+  dplyr::select(pidp, all_of(mh_vars))
+
+lca_df_recoded <- lca_df %>%
+  mutate(across(all_of(mh_vars), ~ ifelse(. == 1, 2, 1)))
+
+###############################################################################
+# 4. DEFINE LCA FORMULA
+###############################################################################
+
+f_mh <- as.formula(
+  paste0("cbind(", paste(mh_vars, collapse = ", "), ") ~ 1")
+)
+
+###############################################################################
+# 5. RUN LCA MODEL WITH 2–6 CLASSES
+###############################################################################
+
+set.seed(123)
+
+mh_models <- list()
+
+for (k in 2:6) {
+  cat("Fitting", k, "class model...\n")
+  mh_models[[k]] <- poLCA(
+    f_mh,
+    data = lca_df_recoded,
+    nclass = k,
+    maxiter = 5000,
+    nrep = 10,
+    verbose = FALSE
+  )
+}
+
+###############################################################################
+# 6. EXTRACT FIT STATISTICS
+###############################################################################
+
+fit_stats <- data.frame(
+  classes = 2:6,
+  BIC = sapply(mh_models[2:6], function(x) x$bic),
+  AIC = sapply(mh_models[2:6], function(x) x$aic),
+  LL = sapply(mh_models[2:6], function(x) x$llik)
+)
+
+print(fit_stats)
+
+# Choose best model (lowest BIC)
+best_k <- fit_stats$classes[which.min(fit_stats$BIC)]
+cat("Best model according to BIC:", best_k, "classes\n")
+
+best_model <- mh_models[[best_k]]
+
+###############################################################################
+# 7. EXTRACT CLASS ASSIGNMENT + POSTERIOR PROBABILITIES
+###############################################################################
+
+mh_classes <- best_model$predclass
+mh_postprobs <- best_model$posterior
+colnames(mh_postprobs) <- paste0("class_prob", 1:best_k)
+
+mh_output <- domain_data %>%
+  dplyr::select(pidp, all_of(mh_vars)) %>%
+  mutate(class = mh_classes) %>%
+  bind_cols(as.data.frame(mh_postprobs))
+
+###############################################################################
+# 8. MERGE LCA CLASS BACK INTO LONG-FORM DATASET
+###############################################################################
+
+mh_classes_df <- mh_output %>%
+  dplyr::select(pidp, class)
+
+long_with_classes <- long_data %>%
+  dplyr::left_join(mh_classes_df, by = "pidp")
+
+###############################################################################
+# 9. PROFILE TABLE FOR INTERPRETATION
+###############################################################################
+
+mh_profiles <- mh_output %>%
+  group_by(class) %>%
+  summarise(across(all_of(mh_vars), mean))
+
+print(mh_profiles)
+
+###############################################################################
+# 10. OPTIONAL: VISUALISATION (FACETED BARPLOT)
+###############################################################################
+
+mh_profiles_long <- mh_profiles %>%
+  pivot_longer(-class, names_to = "condition", values_to = "probability")
+
+library(ggplot2)
+
+ggplot(mh_profiles_long, aes(x = condition, y = probability, fill = condition)) +
+  geom_col() +
+  coord_flip() +
+  facet_wrap(~ class, ncol = 2) +
+  labs(
+    title = "Mental Health Class Profiles",
+    x = "Condition",
+    y = "Probability"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none")
+
+###############################################################################
+# END OF SCRIPT
+###############################################################################
+
+
