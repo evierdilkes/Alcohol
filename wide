@@ -1,0 +1,53 @@
+data_wide <- long_data %>% select(c(pidp, hcondncode89, wave, sex, ethn_dv, auditc4, mastat_dv, hl2gp, hrs_slph, GHQ_total, vdmin, wwmin, hcond96, wkfruit, agegr10_dv, agegr5_dv, hhsize, hiqual_dv, sclfsat1, mday, wday, slp_qual, sclonely, wkvege, sclackcom, scisolate, hcondncode41, hcondncode42, hcondncode38, hcondncode39, hcondncode40, no_reported_illness, smlook, sclfsat3, hcondncode66, hcondncode67, hcondncode77, hcondncode71, hcondncode72, hcondncode73, hcondncode74, hcondncode75, hcondncode76, employ, fimngrs_dv, urban_dv, nbrsnci_dv, jbsec, scopngbha))
+data_wide<-merge(data_wide, biomarkers_AL, by = "pidp")
+wide <- data_wide %>%
+    mutate(wave = paste0("w", wave)) %>%     # turn 6 → "w6"
+    pivot_wider(
+        names_from  = wave,
+        values_from = -pidp,                   # all variables except pidp
+        names_sep   = "_"
+    )
+wide <- wide %>% select(-c("AL_total_w15","AL_total_w7","AL_total_w8","AL_total_w14"  ,"AL_total_w11"      ,      "AL_total_w13"     ,       "AL_total_w12"           
+,"AL_total_w9", "AL_total_w10"))
+
+
+
+
+wide <- wide %>% select(-c("agegr10_dv_w15", 
+"agegr10_dv_w7",           "agegr10_dv_w8",           "agegr10_dv_w14",          "agegr10_dv_w11",        
+ "agegr10_dv_w13" ,         "agegr10_dv_w12" ,         "agegr10_dv_w9" ,               
+"agegr10_dv_w10"  ,        "agegr5_dv_w15" ,          "agegr5_dv_w7"   ,         "agegr5_dv_w8"   ,        
+"agegr5_dv_w14"    ,       "agegr5_dv_w11"  ,         "agegr5_dv_w13"  ,         "agegr5_dv_w12",          
+"agegr5_dv_w9",     "agegr5_dv_w10")) 
+
+wide <- wide %>% select(-c("smlook_w15",           
+ "smlook_w7"      ,         "smlook_w8"  ,                                
+          "smlook_w9"           ,    "smlook_w6"   ,           
+ "smlook_w10"              ))
+
+
+wide <- wide %>% select(-c("sclfsat3_w15",            "sclfsat3_w7",             "sclfsat3_w8" ,            "sclfsat3_w14"   ,         "sclfsat3_w11" ,           "sclfsat3_w13"  ,          "sclfsat3_w12" ,          
+"sclfsat3_w9"    ,         "sclfsat3_w6",             "sclfsat3_w10"))
+
+wide <- wide %>% select(-c(scopngbha_w7, scopngbha_w8, scopngbha_w10, scopngbha_w11, scopngbha_w13, scopngbha_w14, scopngbha_w15))
+wide <- wide %>% select(-c(auditc4_w6, auditc4_w8, auditc4_w10, auditc4_w14, auditc4_w15))
+wide <- wide %>% select(-c(jbsec_w7, jbsec_w9, jbsec_w11, jbsec_w13, jbsec_w15))
+wide <- wide %>% select(-c(nbrsnci_dv_w7, nbrsnci_dv_w8, nbrsnci_dv_w10, nbrsnci_dv_w11, nbrsnci_dv_w13, nbrsnci_dv_w14, nbrsnci_dv_w15))
+wide <- wide %>% select(-c("sex_w15","sex_w7","sex_w8","sex_w14","sex_w11","sex_w13","sex_w12", "sex_w9", sex_w10))  
+wide <- wide %>% select(-c(hl2gp_w6))
+wide <- wide %>% select(-c(no_reported_illness_w6, no_reported_illness_w12, no_reported_illness_w7, no_reported_illness_w8, no_reported_illness_w9, no_reported_illness_w15, no_reported_illness_w14, no_reported_illness_w11, no_reported_illness_w13))
+wide <- wide %>% select(-c(hcondncode77_w6, hcondncode77_w7, hcondncode77_w8, hcondncode77_w9, hcondncode77_w10, hcondncode77_w11, hcondncode77_w12, hcondncode77_w13))
+wide <- wide %>% select(-c(hcondncode76_w6, hcondncode76_w7, hcondncode76_w8, hcondncode76_w9, hcondncode76_w10, hcondncode76_w11, hcondncode76_w12, hcondncode76_w13))
+wide <- wide %>% select(-c(hcondncode75_w6, hcondncode75_w7, hcondncode75_w8, hcondncode75_w9, hcondncode75_w10, hcondncode75_w11, hcondncode75_w12, hcondncode75_w13))
+wide <- wide %>% select(-c(hcondncode74_w6, hcondncode74_w7, hcondncode74_w8, hcondncode74_w9, hcondncode74_w10, hcondncode74_w11, hcondncode74_w12, hcondncode74_w13))
+wide <- wide %>% select(-c(hcondncode73_w6, hcondncode73_w7, hcondncode73_w8, hcondncode73_w9, hcondncode73_w10, hcondncode73_w11, hcondncode73_w12, hcondncode73_w13))
+wide <- wide %>% select(-c(hcondncode72_w6, hcondncode72_w7, hcondncode72_w8, hcondncode72_w9, hcondncode72_w10, hcondncode72_w11, hcondncode72_w12, hcondncode72_w13))
+wide <- wide %>% select(-c(hcondncode71_w6, hcondncode71_w7, hcondncode71_w8, hcondncode71_w9, hcondncode71_w10, hcondncode71_w11, hcondncode71_w12, hcondncode71_w13))
+wide <- wide %>% select(-c(hcondncode67_w6, hcondncode67_w7, hcondncode67_w8, hcondncode67_w9, hcondncode67_w10, hcondncode67_w11, hcondncode67_w12, hcondncode67_w13))
+wide <- wide %>% select(-c(hcondncode66_w6, hcondncode66_w7, hcondncode66_w8, hcondncode66_w9, hcondncode66_w10, hcondncode66_w11, hcondncode66_w12, hcondncode66_w13))
+wide <- wide %>% select(-c(hcondncode40_w6, hcondncode40_w7, hcondncode40_w8, hcondncode40_w9))
+wide <- wide %>% select(-c(hcondncode41_w6, hcondncode41_w7, hcondncode41_w8, hcondncode41_w9))
+wide <- wide %>% select(-c(hcondncode42_w6, hcondncode42_w7, hcondncode42_w8, hcondncode42_w9))
+wide <- wide %>% select(-c(hcondncode39_w6, hcondncode39_w7, hcondncode39_w8, hcondncode39_w9))
+wide <- wide %>% select(-c(hcondncode38_w6, hcondncode38_w7, hcondncode38_w8, hcondncode38_w9))
+wide <- wide %>% select(-c(hcondncode36_w6, hcondncode36_w7, hcondncode36_w8, hcondncode36_w9))
