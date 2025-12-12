@@ -759,3 +759,4 @@ long_data$hcondncode80[long_data$hcondncode80 %in% c(-9, -8, -7)] <- NA #CKD
 long_data$hcondncode8[long_data$hcondncode8 %in% c(-9, -8, -7)] <- NA #emphysema
 long_data$no_reported_illness[long_data$no_reported_illness %in% c(-9, -8, -7)] <- NA #no reported illnesses
 long_data$hcondncode97[long_data$hcondncode97 %in% c(-9, -8, -7)] <- NA #other long standing / chronic condition
+long_data$hcondncode89[long_data$hcondncode89 %in% c(-8, -7)] <- NA
