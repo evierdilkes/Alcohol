@@ -327,6 +327,7 @@ vars_n <- c(
 "n_hcondncode82",
 "n_hcondncode81",
 "n_hcondncode80",
+"n_hcondncode89", 
   "n_sex", "n_sf12mcs_dv", "n_smoker",
   "n_ethn_dv", "n_urban_dv", "n_agegr10_dv", "n_agegr5_dv", "n_hhsize", "n_hiqual_dv",
   "n_indinus_lw", "n_sclfsat1", "n_smlook"
@@ -390,6 +391,7 @@ vars_o <- c(
 "o_hcondncode82",
 "o_hcondncode81",
 "o_hcondncode80",
+"o_hcondncode89",
   "o_sex", "o_sf12mcs_dv", 
   "o_ethn_dv", "o_urban_dv", "o_agegr10_dv", "o_agegr5_dv", "o_hhsize", "o_hiqual_dv",
   "o_indinus_lw", "o_sclfsat1"
