@@ -75,4 +75,39 @@ wide <- wide %>% select(-c(sclackcom_w6, sclackcom_w7, sclackcom_w8))
 wide <- wide %>% select(-c(scisolate_w6, scisolate_w7, scisolate_w8))
 
 
+> wide$anxd_binary <- wide$anxd
+> wide$anxd_binary[wide$anxd_binary == 2] <- 1
+wide$ocd <- wide$hcondncode73_w14 + wide$hcondncode73_w15
+wide$ocd_binary <- wide$ocd
+> wide$ocd_binary[wide$ocd_binary == 2] <- 1
+wide$nervousb <- wide$hcondncode71_w14 + wide$hcondncode71_w15
+> wide$nervousb_binary <- wide$nervousb
+> wide$nervousb_binary[wide$nervousb_binary == 2]<-1
 
+wide$panic <- wide$hcondncode67_w14 + wide$hcondncode67_w15
+wide$panic_binary <- wide$panic
+wide$panic_binary[wide$panic_binary == 2]<-1
+
+wide$phobia <- wide$hcondncode66_w14 + wide$hcondncode66_w15
+wide$phobia_binary <- wide$phobia
+wide$phobia_binary[wide$phobia_binary == 2]<-1
+
+wide$other_anx <- wide$hcondncode76_w15 + wide$hcondncode76_w14
+wide$other_anx_binary <- wide$other_anx
+wide$other_anx_binary[wide$other_anx_binary==2]<-1
+
+wide$any_anx_disorder <- wide$other_anx_binary+wide$phobia_binary + wide$panic_binary + wide$nervousb_binary + wide$ocd_binary + wide$anxd_binary
+wide$any_anx_disorder_binary <- wide$any_anx_disorder
+wide$any_anx_disorder_binary[wide$any_anx_disorder_binary %in% c(2,3,4,5)] <- 1
+
+wide$psychosis <- wide$hcondncode39_w15 + wide$hcondncode39_w14 + wide$hcondncode39_w13 + wide$hcondncode39_w12 + wide$hcondncode39_w11 + wide$hcondncode39_w10
+wide$psychosis_binary <- wide$psychosis
+wide$psychosis_binary[wide$psychosis_binary %in% c(2,3,4)] <- 1
+
+wide$bipolar <- wide$hcondncode40_w15 + wide$hcondncode40_w14 + wide$hcondncode40_w13 + wide$hcondncode40_w12 + wide$hcondncode40_w11 + wide$hcondncode40_w10
+wide$bipolar_binary <- wide$bipolar
+wide$bipolar_binary[wide$bipolar_binary %in% c(2,3,4)] <- 1
+
+wide$ptsd <- wide$hcondncode42_w15 + wide$hcondncode42_w14 + wide$hcondncode42_w13 + wide$hcondncode42_w12 + wide$hcondncode42_w11 + wide$hcondncode42_w10
+wide$ptsd_binary <- wide$ptsd
+wide$ptsd_binary[wide$ptsd_binary %in% c(2,3,4)] <- 1
