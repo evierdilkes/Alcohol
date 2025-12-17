@@ -111,39 +111,70 @@ biomarkers$trig[biomarkers$trig == 30.5] <- NA
 biomarkers$trig[biomarkers$trig == 31.9] <- NA
 biomarkers$chol[biomarkers$chol == 12.5] <- NA
 biomarkers$TC_HDL_ratio <- biomarkers$chol / biomarkers$hdl
+NEED TO ADD IN HERE THE VARIABLES LOGGED AND CLEANED I LOGGED - SEE 
 
 high_risk_higher <- c(
-  "omsysval", "omdiaval", "ompulval",
-  "WHtR", "hba1c", "trig", "CRP_clean", "cfib", "rtin", "TC_HDL_ratio"
-  # add "TC_HDL_ratio" ONLY if using it instead of TC & HDL separately
+"omsysval", "omdiaval", "ompulval",
+"WHtR", "hba1c",
+"trig_log", "crp_log", "cfib_log", "rtin_log",
+"TC_HDL_ratio"
 )
 
 high_risk_lower <- c(
-"dheas", "igfi", "CrCl"
+"dheas_log", "igfi_log", "CrCl"
 )
 
-
-
-# For biomarkers where HIGH = bad
 for (var in high_risk_higher) {
-  
-  # Calculate 75th percentile cut-off
-  cutoff <- quantile(biomarkers[[var]], probs = 0.75, na.rm = TRUE)
-  
-  # Create binary variable var_highrisk
-  biomarkers[[paste0(var, "_highrisk")]] <- ifelse(biomarkers[[var]] >= cutoff, 1, 0)
+cutoff <- quantile(biomarkers[[var]], 0.75, na.rm = TRUE)
+biomarkers[[paste0(var, "_highrisk")]] <- ifelse(
+biomarkers[[var]] >= cutoff, 1, 0
+)
 }
 
-# For biomarkers where LOW = bad
 for (var in high_risk_lower) {
-  
-  # Calculate 25th percentile cut-off
-  cutoff <- quantile(biomarkers[[var]], probs = 0.25, na.rm = TRUE)
-  
-  # Create binary variable var_highrisk
-  biomarkers[[paste0(var, "_highrisk")]] <- ifelse(biomarkers[[var]] <= cutoff, 1, 0)
-}
+cutoff <- quantile(biomarkers[[var]], 0.25, na.rm = TRUE)
+biomarkers[[paste0(var, "_highrisk")]] <- ifelse(
+biomarkers[[var]] <= cutoff, 1, 0
+)}
 
+highrisk_vars <- grep("_highrisk$", names(biomarkers), value = TRUE)
+biomarkers$AL_n_available <- rowSums(!is.na(biomarkers[highrisk_vars]))
+biomarkers$AL_total <- rowSums(biomarkers[highrisk_vars], na.rm = TRUE)
+biomarkers$AL_prop <- biomarkers$AL_total / biomarkers$AL_n_available
+biomarkers$crp_z  <- scale(biomarkers$crp_log)
+biomarkers$trig_z <- scale(biomarkers$trig_log)
+biomarkers$cfib_z <- scale(biomarkers$cfib_log)
+biomarkers$ferritin_z <- scale(biomarkers$rtin_log)
+biomarkers$dheas_z <- -scale(biomarkers$dheas_log)
+biomarkers$igfi_z  <- -scale(biomarkers$igfi_log)
+biomarkers$CrCl_z  <- -scale(biomarkers$CrCl)
+biomarkers$sysBP_z <- scale(biomarkers$omsysval)
+biomarkers$diaBP_z <- scale(biomarkers$omdiaval)
+biomarkers$pulse_z <- scale(biomarkers$ompulval)
+biomarkers$WHtR_z  <- scale(biomarkers$WHtR)
+biomarkers$hba1c_z <- scale(biomarkers$hba1c)
+biomarkers$TC_HDL_z <- scale(biomarkers$TC_HDL_ratio)
+z_vars <- c(
+"crp_z","trig_z","cfib_z","ferritin_z",
+"dheas_z","igfi_z","CrCl_z",
+"sysBP_z","diaBP_z","pulse_z",
+"WHtR_z","hba1c_z","TC_HDL_z"
+)
+biomarkers$AL_z <- rowMeans(biomarkers[z_vars], na.rm = TRUE)
+biomarkers$AL_inflammation <- rowMeans(
+biomarkers[c("crp_z","cfib_z","ferritin_z")], na.rm = TRUE
+)
+biomarkers$AL_metabolic <- rowMeans(
+biomarkers[c("WHtR_z","hba1c_z","trig_z","TC_HDL_z")], na.rm = TRUE
+)
+biomarkers$AL_cardio <- rowMeans(
+biomarkers[c("sysBP_z","diaBP_z","pulse_z")], na.rm = TRUE
+)
+biomarkers$AL_neuroendocrine <- rowMeans(
+biomarkers[c("dheas_z","igfi_z")], na.rm = TRUE
+)
+
+data_long_AL_new$b_scghq1_dv[data_long_AL_new$b_scghq1_dv %in% c(-9, -8)] <- NA
 
 ### -------------------------
 ### 3. CREATE TOTAL ALLOSTATIC LOAD SCORE
@@ -431,5 +462,4 @@ ggplot(mh_profiles_long, aes(x = condition, y = probability, fill = condition)) 
 ###############################################################################
 # END OF SCRIPT
 ###############################################################################
-
 
