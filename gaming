@@ -608,3 +608,7 @@ long_data_gaming$k_scghql[long_data_gaming$k_scghql == -2] <- NA
 long_data_gaming$k_scghql[long_data_gaming$k_scghql == -1] <- NA
 
 long_data_gaming$baseline_ghq <- long_data_gaming$k_scghqa + long_data_gaming$k_scghqb + long_data_gaming$k_scghqc + long_data_gaming$k_scghqd + long_data_gaming$k_scghqe + long_data_gaming$k_scghqf + long_data_gaming$k_scghqg + long_data_gaming$k_scghqh + long_data_gaming$k_scghqi + long_data_gaming$k_scghqj + long_data_gaming$k_scghqk + long_data_gaming$k_scghql
+
+### this is reverse coding the gaming variable
+long_data_gaming <- long_data_gaming %>%
+  mutate(gaming = 6 - gaming)
