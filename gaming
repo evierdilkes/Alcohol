@@ -506,3 +506,105 @@ long_data_gaming$no_reported_illness[long_data_gaming$no_reported_illness %in% c
 long_data_gaming$hcondncode97[long_data_gaming$hcondncode97 %in% c(-9, -8, -7)] <- NA #other long standing / chronic condition
 long_data_gaming$hcondncode89[long_data_gaming$hcondncode89 %in% c(-8, -7)] <- NA
 long_data_gaming$gaming[long_data_gaming$gaming %in% c(-8, -7, -2, -1)] <- NA
+
+
+baseline_gaming <- select(k_indresp, c(pidp,  "k_scghqa", "k_scghqb", "k_scghqc", "k_scghqd", "k_scghqe", "k_scghqf", "k_scghqg",
+  "k_scghqh", "k_scghqi", "k_scghqj", "k_scghqk", "k_scghql"))
+
+long_data_gaming_2 <- merge(
+  long_data_gaming,
+  baseline_gaming,
+  by = "pidp",
+  all.x = TRUE
+)
+
+long_data_gaming <- long_data_gaming_2 
+
+rm(long_data_gaming_2)
+
+#### NAing for GHQ: concentration
+long_data_gaming$k_scghqa[long_data_gaming$k_scghqa == -9] <- NA
+long_data_gaming$k_scghqa[long_data_gaming$k_scghqa == -8] <- NA
+long_data_gaming$k_scghqa[long_data_gaming$k_scghqa == -7] <- NA
+long_data_gaming$k_scghqa[long_data_gaming$k_scghqa == -2] <- NA
+long_data_gaming$k_scghqa[long_data_gaming$k_scghqa == -1] <- NA
+
+#### NAing for GHQ: loss of sleep
+long_data_gaming$k_scghqb[long_data_gaming$k_scghqb == -9] <- NA
+long_data_gaming$k_scghqb[long_data_gaming$k_scghqb == -8] <- NA
+long_data_gaming$k_scghqb[long_data_gaming$k_scghqb == -7] <- NA
+long_data_gaming$k_scghqb[long_data_gaming$k_scghqb == -2] <- NA
+long_data_gaming$k_scghqb[long_data_gaming$k_scghqb == -1] <- NA
+
+#### NAing for GHQ: playing a useful role
+long_data_gaming$k_scghqc[long_data_gaming$k_scghqc == -9] <- NA
+long_data_gaming$k_scghqc[long_data_gaming$k_scghqc == -8] <- NA
+long_data_gaming$k_scghqc[long_data_gaming$k_scghqc == -7] <- NA
+long_data_gaming$k_scghqc[long_data_gaming$k_scghqc == -2] <- NA
+long_data_gaming$k_scghqc[long_data_gaming$k_scghqc == -1] <- NA
+
+
+#### NAing for GHQ: capable of making decisions
+long_data_gaming$k_scghqd[long_data_gaming$k_scghqd == -9] <- NA
+long_data_gaming$k_scghqd[long_data_gaming$k_scghqd == -8] <- NA
+long_data_gaming$k_scghqd[long_data_gaming$k_scghqd == -7] <- NA
+long_data_gaming$k_scghqd[long_data_gaming$k_scghqd == -2] <- NA
+long_data_gaming$k_scghqd[long_data_gaming$k_scghqd == -1] <- NA
+
+#### NAing for GHQ: constantly under strain
+long_data_gaming$scghqe[long_data_gaming$scghqe == -9] <- NA
+long_data_gaming$scghqe[long_data_gaming$scghqe == -8] <- NA
+long_data_gaming$scghqe[long_data_gaming$scghqe == -7] <- NA
+long_data_gaming$scghqe[long_data_gaming$scghqe == -2] <- NA
+long_data_gaming$scghqe[long_data_gaming$scghqe == -1] <- NA
+
+#### NAing for GHQ: problems overcoming difficulties
+long_data_gaming$k_scghqf[long_data_gaming$k_scghqf == -9] <- NA
+long_data_gaming$k_scghqf[long_data_gaming$k_scghqf == -8] <- NA
+long_data_gaming$k_scghqf[long_data_gaming$k_scghqf == -7] <- NA
+long_data_gaming$k_scghqf[long_data_gaming$k_scghqf == -2] <- NA
+long_data_gaming$k_scghqf[long_data_gaming$k_scghqf == -1] <- NA
+
+#### NAing for GHQ: enjoy day-to-day activities
+long_data_gaming$k_scghqg[long_data_gaming$k_scghqg == -9] <- NA
+long_data_gaming$k_scghqg[long_data_gaming$k_scghqg == -8] <- NA
+long_data_gaming$k_scghqg[long_data_gaming$k_scghqg == -7] <- NA
+long_data_gaming$k_scghqg[long_data_gaming$k_scghqg == -2] <- NA
+long_data_gaming$k_scghqg[long_data_gaming$k_scghqg == -1] <- NA
+
+#### NAing for GHQ: ability to face problems
+long_data_gaming$k_scghqh[long_data_gaming$k_scghqh == -9] <- NA
+long_data_gaming$k_scghqh[long_data_gaming$k_scghqh == -8] <- NA
+long_data_gaming$k_scghqh[long_data_gaming$k_scghqh == -7] <- NA
+long_data_gaming$k_scghqh[long_data_gaming$k_scghqh == -2] <- NA
+long_data_gaming$k_scghqh[long_data_gaming$k_scghqh == -1] <- NA
+
+#### NAing for GHQ: unhappy or depressed
+long_data_gaming$scghqi[long_data_gaming$scghqi == -9] <- NA
+long_data_gaming$scghqi[long_data_gaming$scghqi == -8] <- NA
+long_data_gaming$scghqi[long_data_gaming$scghqi == -7] <- NA
+long_data_gaming$scghqi[long_data_gaming$scghqi == -2] <- NA
+long_data_gaming$scghqi[long_data_gaming$scghqi == -1] <- NA
+
+#### NAing for GHQ: losing confidence
+long_data_gaming$k_scghqj[long_data_gaming$k_scghqj == -9] <- NA
+long_data_gaming$k_scghqj[long_data_gaming$k_scghqj == -8] <- NA
+long_data_gaming$k_scghqj[long_data_gaming$k_scghqj == -7] <- NA
+long_data_gaming$k_scghqj[long_data_gaming$k_scghqj == -2] <- NA
+long_data_gaming$k_scghqj[long_data_gaming$k_scghqj == -1] <- NA
+
+#### NAing for GHQ: believe worthless
+long_data_gaming$k_scghqk[long_data_gaming$k_scghqk == -9] <- NA
+long_data_gaming$k_scghqk[long_data_gaming$k_scghqk == -8] <- NA
+long_data_gaming$k_scghqk[long_data_gaming$k_scghqk == -7] <- NA
+long_data_gaming$k_scghqk[long_data_gaming$k_scghqk == -2] <- NA
+long_data_gaming$k_scghqk[long_data_gaming$k_scghqk == -1] <- NA
+
+#### NAing for GHQ: general happiness
+long_data_gaming$k_scghql[long_data_gaming$k_scghql == -9] <- NA
+long_data_gaming$k_scghql[long_data_gaming$k_scghql == -8] <- NA
+long_data_gaming$k_scghql[long_data_gaming$k_scghql == -7] <- NA
+long_data_gaming$k_scghql[long_data_gaming$k_scghql == -2] <- NA
+long_data_gaming$k_scghql[long_data_gaming$k_scghql == -1] <- NA
+
+long_data_gaming$baseline_ghq <- long_data_gaming$k_scghqa + long_data_gaming$k_scghqb + long_data_gaming$k_scghqc + long_data_gaming$k_scghqd + long_data_gaming$k_scghqe + long_data_gaming$k_scghqf + long_data_gaming$k_scghqg + long_data_gaming$k_scghqh + long_data_gaming$k_scghqi + long_data_gaming$k_scghqj + long_data_gaming$k_scghqk + long_data_gaming$k_scghql
