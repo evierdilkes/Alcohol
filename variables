@@ -305,7 +305,7 @@ long_data_ALNA_all <- merge(long_data_ALNA_all,
 + all.x = TRUE
 + )
 
-
+data_long_AL_new$b_scghq1_dv[data_long_AL_new$b_scghq1_dv %in% c(-9,-8)] <- NA ###IMPORTANT BASELINE GHQ
 
 
 
@@ -463,3 +463,50 @@ ggplot(mh_profiles_long, aes(x = condition, y = probability, fill = condition)) 
 # END OF SCRIPT
 ###############################################################################
 
+#economic instability
+data_long_AL_new <- data_long_AL_new %>%
+  mutate(income = fimngrs_dv)
+
+income_measures <- data_long_AL_new %>%
+  group_by(pidp) %>%
+  filter(n() >= 3) %>%
+  summarise(
+    income_slope = coef(lm(income ~ wave))[2],
+    income_sd    = sd(income, na.rm = TRUE),
+    mean_abs_change = mean(abs(diff(income)), na.rm = TRUE))
+
+data_long_AL_new<-merge(data_long_AL_new, income_measures, by = "pidp")
+
+data_long_AL_new <- data_long_AL_new %>%
+  arrange(pidp, wave) %>%
+  group_by(pidp) %>%
+  mutate(
+    income_change = abs(income - lag(income)), 
+  )
+
+library(psych)
+library(psych)
+
+data_long_AL_new <- data_long_AL_new %>%
+  mutate(
+    income_change_w = winsor(
+      income_change,
+      trim = 0.01
+    )
+  )
+
+
+#####alcohol stuff
+data_subset <- data_long_AL_new[data_long_AL_new$wave %in% c(7, 9, 11, 12, 13), ]
+data_subset$auditc3_binary <- data_subset$auditc3
+data_subset$auditc3_binary[data_subset$auditc3_binary %in% c(1,2,3)] <- 0
+data_subset$auditc3_binary[data_subset$auditc3_binary %in% c(4,5)] <- 1
+data_subset$auditc4_binary <- data_subset$auditc4
+data_subset$auditc4_binary[data_subset$auditc4_binary %in% c(1,2)] <- 0
+data_subset$auditc4_binary[data_subset$auditc4_binary %in% c(3,4,5)] <- 1
+data_subset$alcohol_risk <- data_subset$auditc3_binary + data_subset$auditc4_binary
+
+library(dplyr)
+
+data_subset <- data_subset %>%
+  filter(!is.na(alcohol_risk))
