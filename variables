@@ -308,6 +308,26 @@ long_data_ALNA_all <- merge(long_data_ALNA_all,
 data_long_AL_new$b_scghq1_dv[data_long_AL_new$b_scghq1_dv %in% c(-9,-8)] <- NA ###IMPORTANT BASELINE GHQ
 
 
+data_subset <- data_subset %>%
+  mutate(income = cut(
+    income,
+    breaks = c(-Inf, 0, 1000, 2000, 3000, 4000, 6000, 10000, Inf),
+    right = FALSE,
+    labels = c("<0", "0–999", "1000–1999", "2000–2999", "3000–3999",
+               "4000–5999", "6000–9999", "10000+")
+  ))
+
+data_subset <- data_subset %>%
+  mutate(income = case_when(
+    income >= 6000 ~ 0,
+    income >= 4000 ~ 1,
+    income >= 3000 ~ 2,
+    income >= 2000 ~ 3,
+    income >= 1000 ~ 4,
+    income >= 0    ~ 5,
+    income <  0    ~ 6,
+    TRUE ~ NA_real_
+  ))
 
 
 library(dplyr)
