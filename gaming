@@ -1,0 +1,508 @@
+######## WAVE 11 VARIABLES
+vars_k_gaming <- c("pidp", "k_auditc1", "k_auditc2", "k_auditc3", "k_auditc4", "k_auditc5",
+  "k_employ", "k_fimngrs_dv", "k_hl2gp",
+  "k_scghqa", "k_scghqb", "k_scghqc", "k_scghqd", "k_scghqe", "k_scghqf", "k_scghqg",
+  "k_scghqh", "k_scghqi", "k_scghqj", "k_scghqk", "k_scghql",
+  "k_scsf1", "k_scsf2a", "k_scsf2b", "k_scsf3a", "k_scsf3b", "k_scsf4a", "k_scsf4b",
+  "k_scsf5", "k_scsf6a", "k_scsf6b", "k_scsf6c", "k_scsf7",
+"k_hcondncode1",
+"k_hcondncode10",
+"k_hcondncode11",
+"k_hcondncode12",
+"k_hcondncode15",
+"k_hcondncode16",
+"k_hcondncode19",
+"k_hcondncode21",
+"k_hcondncode23",
+"k_hcondncode24",
+"k_hcondncode25",
+"k_hcondncode26",
+"k_hcondncode27",
+"k_hcondncode28",
+"k_hcondncode29",
+"k_hcondncode3",
+"k_hcondncode30",
+"k_hcondncode31",
+"k_hcondncode32",
+"k_hcondncode33",
+"k_hcondncode34",
+"k_hcondncode35",
+"k_hcondncode36",
+"k_hcondncode4",
+"k_hcondncode41",
+"k_hcondncode42",
+"k_hcondncode5",
+"k_hcondncode6",
+"k_hcondncode7",
+"k_hcondncode38",
+"k_hcondncode39", 
+"k_hcondncode40",
+"k_hcondncode8",
+"k_hcondncode96",
+"k_hcondncode97",
+  "k_sex", "k_sf12mcs_dv", "k_smoker", "k_vdmin", "k_wwmin", "k_ypnetcht",
+  "k_ethn_dv", "k_urban_dv",
+  "k_agegr10_dv", "k_agegr5_dv", "k_hhsize", "k_hiqual_dv",
+  "k_indinus_lw", "k_scdascoh_dv", "k_scdassat_dv", "k_sclfsat1", 
+"k_mdmin", "k_mday", "k_wday", "k_smlook", "k_sclackcom", "k_scisolate", "k_sclonely", 
+"k_wkvege", "k_mastat_dv", "k_gaming"
+)
+
+
+######## WAVE 12 VARIABLES
+
+vars_l_gaming <- c("pidp", "l_auditc1", "l_auditc2", "l_auditc3", "l_auditc4", "l_auditc5",
+  "l_employ", "l_fimngrs_dv", "l_hl2gp",
+  "l_scghqa", "l_scghqb", "l_scghqc", "l_scghqd", "l_scghqe", "l_scghqf", "l_scghqg",
+  "l_scghqh", "l_scghqi", "l_scghqj", "l_scghqk", "l_scghql",
+  "l_scsf1", "l_scsf2a", "l_scsf2b", "l_scsf3a", "l_scsf3b", "l_scsf4a", "l_scsf4b",
+  "l_scsf5", "l_scsf6a", "l_scsf6b", "l_scsf6c", "l_scsf7", "l_hcondncode1",
+"l_hcondncode10",
+"l_hcondncode11",
+"l_hcondncode12",
+"l_hcondncode15",
+"l_hcondncode16",
+"l_hcondncode19",
+"l_hcondncode21",
+"l_hcondncode23",
+"l_hcondncode24",
+"l_hcondncode25",
+"l_hcondncode26",
+"l_hcondncode27",
+"l_hcondncode28",
+"l_hcondncode29",
+"l_hcondncode3",
+"l_hcondncode30",
+"l_hcondncode31",
+"l_hcondncode32",
+"l_hcondncode33",
+"l_hcondncode34",
+"l_hcondncode35",
+"l_hcondncode36",
+"l_hcondncode4",
+"l_hcondncode41",
+"l_hcondncode42",
+"l_hcondncode5",
+"l_hcondncode6",
+"l_hcondncode7",
+"l_hcondncode38",
+"l_hcondncode39", 
+"l_hcondncode40",
+"l_hcondncode8",
+"l_hcondncode96",
+"l_hcondncode97",
+  "l_sex", "l_sf12mcs_dv", "l_smoker", "l_ypnetcht", "l_sclfsat1",
+  "l_ethn_dv", "l_urban_dv", "l_agegr10_dv", "l_agegr5_dv", "l_hhsize", "l_hiqual_dv",
+  "l_indinus_lw", "l_mdmin", "l_mday", "l_wday", "l_smlook", "l_nbrsnci_dv", 
+"l_sclackcom", "l_scisolate", "l_sclonely", "l_sclfsat3", "l_jbsec", "l_scopngbha", 
+"l_mastat_dv", "l_gaming"
+)
+
+######## WAVE 13 VARIABLES
+vars_m_gaming <- c(
+  "pidp",
+  "m_auditc1", "m_auditc2", "m_auditc3", "m_auditc4", "m_auditc5",
+  "m_employ", "m_fimngrs_dv", "m_hl2gp",
+  "m_scghqa", "m_scghqb", "m_scghqc", "m_scghqd", "m_scghqe", "m_scghqf", "m_scghqg",
+  "m_scghqh", "m_scghqi", "m_scghqj", "m_scghqk", "m_scghql",
+  "m_scsf1", "m_scsf2a", "m_scsf2b", "m_scsf3a", "m_scsf3b", "m_scsf4a", "m_scsf4b",
+  "m_scsf5", "m_scsf6a", "m_scsf6b", "m_scsf6c", "m_scsf7","m_hcondncode1",
+"m_hcondncode10",
+"m_hcondncode11",
+"m_hcondncode12",
+"m_hcondncode15",
+"m_hcondncode16",
+"m_hcondncode19",
+"m_hcondncode21",
+"m_hcondncode23",
+"m_hcondncode24",
+"m_hcondncode25",
+"m_hcondncode26",
+"m_hcondncode27",
+"m_hcondncode28",
+"m_hcondncode29",
+"m_hcondncode3",
+"m_hcondncode30",
+"m_hcondncode31",
+"m_hcondncode32",
+"m_hcondncode33",
+"m_hcondncode34",
+"m_hcondncode35",
+"m_hcondncode36",
+"m_hcondncode4",
+"m_hcondncode41",
+"m_hcondncode42",
+"m_hcondncode5",
+"m_hcondncode6",
+"m_hcondncode7",
+"m_hcondncode38",
+"m_hcondncode39", 
+"m_hcondncode40",
+"m_hcondncode8",
+"m_hcondncode96",
+"m_hcondncode97",
+  "m_sex", "m_sf12mcs_dv", "m_smoker", "m_vdmin", "m_wwmin", "m_ypnetcht",
+  "m_ethn_dv", "m_urban_dv", 
+  "m_agegr10_dv", "m_agegr5_dv", "m_hhsize", "m_hiqual_dv",
+  "m_indinus_lw", "m_scdascoh_dv", "m_scdassat_dv", "m_sclfsat1", "m_mdmin", "m_mday", "m_wday",
+"m_smlook", "m_sclackcom", "m_scisolate", "m_sclonely", "m_slp_qual", "m_hrs_slph", 
+"m_wkvege", "m_sclfsat3", "m_mastat_dv", "m_gaming"
+)
+
+######## WAVE 14 VARIABLES
+vars_n_gaming <- c(
+  "pidp",
+  "n_employ", "n_fimngrs_dv", "n_hl2gp",
+  "n_scghqa", "n_scghqb", "n_scghqc", "n_scghqd", "n_scghqe", "n_scghqf", "n_scghqg",
+  "n_scghqh", "n_scghqi", "n_scghqj", "n_scghqk", "n_scghql", "n_sclackcom", "n_scisolate", 
+"n_sclonely", "n_sclfsat3", "n_jbsec", "n_mastat_dv",
+  "n_scsf1", "n_scsf2a", "n_scsf2b", "n_scsf3a", "n_scsf3b", "n_scsf4a", "n_scsf4b",
+  "n_scsf5", "n_scsf6a", "n_scsf6b", "n_scsf6c", "n_scsf7",
+"n_hcondncode1",
+"n_hcondncode10",
+"n_hcondncode11",
+"n_hcondncode12",
+"n_hcondncode15",
+"n_hcondncode16",
+"n_hcondncode19",
+"n_hcondncode21",
+"n_hcondncode23",
+"n_hcondncode24",
+"n_hcondncode25",
+"n_hcondncode26",
+"n_hcondncode27",
+"n_hcondncode28",
+"n_hcondncode29",
+"n_hcondncode3",
+"n_hcondncode30",
+"n_hcondncode31",
+"n_hcondncode32",
+"n_hcondncode33",
+"n_hcondncode34",
+"n_hcondncode35",
+"n_hcondncode36",
+"n_hcondncode39",
+"n_hcondncode4",
+"n_hcondncode40",
+"n_hcondncode41",
+"n_hcondncode42",
+"n_hcondncode5",
+"n_hcondncode6",
+"n_hcondncode66",
+"n_hcondncode67",
+"n_hcondncode7",
+"n_hcondncode77",
+"n_hcondncode71",
+"n_hcondncode72",
+"n_hcondncode73",
+"n_hcondncode74",
+"n_hcondncode75",
+"n_hcondncode76",
+"n_hcondncode38",
+"n_hcondncode8",
+"n_hcondncode96",
+"n_hcondncode97",
+"n_hcondncode68",
+"n_hcondncode79",
+"n_hcondncode82",
+"n_hcondncode81",
+"n_hcondncode80",
+"n_hcondncode89", 
+  "n_sex", "n_sf12mcs_dv", "n_smoker",
+  "n_ethn_dv", "n_urban_dv", "n_agegr10_dv", "n_agegr5_dv", "n_hhsize", "n_hiqual_dv",
+  "n_indinus_lw", "n_sclfsat1", "n_smlook", "n_gaming"
+)
+
+
+# Wave 11
+wave_11_gaming <- k_indresp[, vars_k_gaming]
+
+# Wave 12
+wave_12_gaming <- l_indresp[, vars_l_gaming]
+
+# Wave 13
+wave_13_gaming <- m_indresp[, vars_m_gaming]
+
+# Wave 14
+wave_14_gaming <- n_indresp[, vars_n_gaming]
+
+wave_11_gaming$wave <- 11
+wave_12_gaming$wave <- 12
+wave_13_gaming$wave <- 13
+wave_14_gaming$wave <- 14
+wave_11_gaming <- clean_names(wave_11_gaming)
+wave_12_gaming <- clean_names(wave_12_gaming)
+wave_13_gaming <- clean_names(wave_13_gaming)
+wave_14_gaming <- clean_names(wave_14_gaming)
+
+
+long_data_gaming <- bind_rows(
+wave_11_gaming, wave_12_gaming, wave_13_gaming, wave_14_gaming
+)
+
+long_data_gaming <- long_data_gaming %>%
+  select(pidp, wave, everything())
+
+
+
+#### NAing for employment
+long_data_gaming$employ[long_data_gaming$employ == -9] <- NA
+long_data_gaming$employ[long_data_gaming$employ == -8] <- NA
+long_data_gaming$employ[long_data_gaming$employ == -7] <- NA
+long_data_gaming$employ[long_data_gaming$employ == -2] <- NA
+long_data_gaming$employ[long_data_gaming$employ == -1] <- NA
+
+#### NAing for monthly personal income
+long_data_gaming$fimngrs_dv[long_data_gaming$fimngrs_dv == -9] <- NA
+long_data_gaming$fimngrs_dv[long_data_gaming$fimngrs_dv == -8] <- NA
+long_data_gaming$fimngrs_dv[long_data_gaming$fimngrs_dv == -2] <- NA
+long_data_gaming$fimngrs_dv[long_data_gaming$fimngrs_dv == -1] <- NA
+
+
+#### NAing for GHQ: concentration
+long_data_gaming$scghqa[long_data_gaming$scghqa == -9] <- NA
+long_data_gaming$scghqa[long_data_gaming$scghqa == -8] <- NA
+long_data_gaming$scghqa[long_data_gaming$scghqa == -7] <- NA
+long_data_gaming$scghqa[long_data_gaming$scghqa == -2] <- NA
+long_data_gaming$scghqa[long_data_gaming$scghqa == -1] <- NA
+
+#### NAing for GHQ: loss of sleep
+long_data_gaming$scghqb[long_data_gaming$scghqb == -9] <- NA
+long_data_gaming$scghqb[long_data_gaming$scghqb == -8] <- NA
+long_data_gaming$scghqb[long_data_gaming$scghqb == -7] <- NA
+long_data_gaming$scghqb[long_data_gaming$scghqb == -2] <- NA
+long_data_gaming$scghqb[long_data_gaming$scghqb == -1] <- NA
+
+#### NAing for GHQ: playing a useful role
+long_data_gaming$scghqc[long_data_gaming$scghqc == -9] <- NA
+long_data_gaming$scghqc[long_data_gaming$scghqc == -8] <- NA
+long_data_gaming$scghqc[long_data_gaming$scghqc == -7] <- NA
+long_data_gaming$scghqc[long_data_gaming$scghqc == -2] <- NA
+long_data_gaming$scghqc[long_data_gaming$scghqc == -1] <- NA
+
+
+#### NAing for GHQ: capable of making decisions
+long_data_gaming$scghqd[long_data_gaming$scghqd == -9] <- NA
+long_data_gaming$scghqd[long_data_gaming$scghqd == -8] <- NA
+long_data_gaming$scghqd[long_data_gaming$scghqd == -7] <- NA
+long_data_gaming$scghqd[long_data_gaming$scghqd == -2] <- NA
+long_data_gaming$scghqd[long_data_gaming$scghqd == -1] <- NA
+
+#### NAing for GHQ: constantly under strain
+long_data_gaming$scghqe[long_data_gaming$scghqe == -9] <- NA
+long_data_gaming$scghqe[long_data_gaming$scghqe == -8] <- NA
+long_data_gaming$scghqe[long_data_gaming$scghqe == -7] <- NA
+long_data_gaming$scghqe[long_data_gaming$scghqe == -2] <- NA
+long_data_gaming$scghqe[long_data_gaming$scghqe == -1] <- NA
+
+#### NAing for GHQ: problems overcoming difficulties
+long_data_gaming$scghqf[long_data_gaming$scghqf == -9] <- NA
+long_data_gaming$scghqf[long_data_gaming$scghqf == -8] <- NA
+long_data_gaming$scghqf[long_data_gaming$scghqf == -7] <- NA
+long_data_gaming$scghqf[long_data_gaming$scghqf == -2] <- NA
+long_data_gaming$scghqf[long_data_gaming$scghqf == -1] <- NA
+
+#### NAing for GHQ: enjoy day-to-day activities
+long_data_gaming$scghqg[long_data_gaming$scghqg == -9] <- NA
+long_data_gaming$scghqg[long_data_gaming$scghqg == -8] <- NA
+long_data_gaming$scghqg[long_data_gaming$scghqg == -7] <- NA
+long_data_gaming$scghqg[long_data_gaming$scghqg == -2] <- NA
+long_data_gaming$scghqg[long_data_gaming$scghqg == -1] <- NA
+
+#### NAing for GHQ: ability to face problems
+long_data_gaming$scghqh[long_data_gaming$scghqh == -9] <- NA
+long_data_gaming$scghqh[long_data_gaming$scghqh == -8] <- NA
+long_data_gaming$scghqh[long_data_gaming$scghqh == -7] <- NA
+long_data_gaming$scghqh[long_data_gaming$scghqh == -2] <- NA
+long_data_gaming$scghqh[long_data_gaming$scghqh == -1] <- NA
+
+#### NAing for GHQ: unhappy or depressed
+long_data_gaming$scghqi[long_data_gaming$scghqi == -9] <- NA
+long_data_gaming$scghqi[long_data_gaming$scghqi == -8] <- NA
+long_data_gaming$scghqi[long_data_gaming$scghqi == -7] <- NA
+long_data_gaming$scghqi[long_data_gaming$scghqi == -2] <- NA
+long_data_gaming$scghqi[long_data_gaming$scghqi == -1] <- NA
+
+#### NAing for GHQ: losing confidence
+long_data_gaming$scghqj[long_data_gaming$scghqj == -9] <- NA
+long_data_gaming$scghqj[long_data_gaming$scghqj == -8] <- NA
+long_data_gaming$scghqj[long_data_gaming$scghqj == -7] <- NA
+long_data_gaming$scghqj[long_data_gaming$scghqj == -2] <- NA
+long_data_gaming$scghqj[long_data_gaming$scghqj == -1] <- NA
+
+#### NAing for GHQ: believe worthless
+long_data_gaming$scghqk[long_data_gaming$scghqk == -9] <- NA
+long_data_gaming$scghqk[long_data_gaming$scghqk == -8] <- NA
+long_data_gaming$scghqk[long_data_gaming$scghqk == -7] <- NA
+long_data_gaming$scghqk[long_data_gaming$scghqk == -2] <- NA
+long_data_gaming$scghqk[long_data_gaming$scghqk == -1] <- NA
+
+#### NAing for GHQ: general happiness
+long_data_gaming$scghql[long_data_gaming$scghql == -9] <- NA
+long_data_gaming$scghql[long_data_gaming$scghql == -8] <- NA
+long_data_gaming$scghql[long_data_gaming$scghql == -7] <- NA
+long_data_gaming$scghql[long_data_gaming$scghql == -2] <- NA
+long_data_gaming$scghql[long_data_gaming$scghql == -1] <- NA
+
+#### NAing for self-rated health
+long_data_gaming$scsf1[long_data_gaming$scsf1 == -9] <- NA
+long_data_gaming$scsf1[long_data_gaming$scsf1 == -8] <- NA
+long_data_gaming$scsf1[long_data_gaming$scsf1 == -7] <- NA
+long_data_gaming$scsf1[long_data_gaming$scsf1 == -2] <- NA
+long_data_gaming$scsf1[long_data_gaming$scsf1 == -1] <- NA
+
+#### NAing for Health limits moderate activities
+long_data_gaming$scsf2a[long_data_gaming$scsf2a == -10] <- NA
+long_data_gaming$scsf2a[long_data_gaming$scsf2a == -9] <- NA
+long_data_gaming$scsf2a[long_data_gaming$scsf2a == -8] <- NA
+long_data_gaming$scsf2a[long_data_gaming$scsf2a == -7] <- NA
+long_data_gaming$scsf2a[long_data_gaming$scsf2a == -2] <- NA
+long_data_gaming$scsf2a[long_data_gaming$scsf2a == -1] <- NA
+
+long_data_gaming$GHQ_total <- long_data_gaming$scghqa + long_data_gaming$scghqb + long_data_gaming$scghqc + long_data_gaming$scghqd + long_data_gaming$scghqe + long_data_gaming$scghqf + long_data_gaming$scghqg + long_data_gaming$scghqh + long_data_gaming$scghqi + long_data_gaming$scghqj + long_data_gaming$scghqk + long_data_gaming$scghql
+long_data_gaming$GHQ_total <- long_data_gaming$GHQ_total - 12
+
+#### NAing for Health limits flights of stairs
+long_data_gaming$scsf2b[long_data_gaming$scsf2b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for physical health limits amount of work
+long_data_gaming$scsf3a[long_data_gaming$scsf3a %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for physical health limits type of work
+long_data_gaming$scsf3b[long_data_gaming$scsf3b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for mental health meant accomplished less
+long_data_gaming$scsf4a[long_data_gaming$scsf4a %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for mental health meant worked less carefully
+long_data_gaming$scsf4b[long_data_gaming$scsf4b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for pain interfered with work
+long_data_gaming$scsf5[long_data_gaming$scsf5 %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for felt calm and peaceful 
+long_data_gaming$scsf6a[long_data_gaming$scsf6a %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for had a lot of energy
+long_data_gaming$scsf6b[long_data_gaming$scsf6b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for felt downhearted and depressed
+long_data_gaming$scsf6c[long_data_gaming$scsf6c %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for physical or mental health interfered with social life
+long_data_gaming$scsf7[long_data_gaming$scsf7 %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for SF-12 Mental Compoenent Summary
+long_data_gaming$sf12mcs_dv[long_data_gaming$sf12mcs_dv %in% c(-9, -8, -7)] <- NA
+
+#NAing for smoking
+long_data_gaming$smoker[long_data_gaming$smoker %in% c(-10, -9, -7, -2, -1)] <- NA
+
+#NAing for ethnicity
+long_data_gaming$smoker[long_data_gaming$smoker == -9] <- NA
+
+#NAing for urban or rural
+long_data_gaming$urban_dv[long_data_gaming$urban_dv == -9] <- NA
+
+#NAing for Past 12 months alcoholic drink	
+long_data_gaming$auditc1[long_data_gaming$auditc1 %in% c(-9, -8, -7, -2, -1)] <- NA
+
+#NAing for Alcohol frequency past 12 months
+long_data_gaming$auditc3[long_data_gaming$auditc3 %in% c(-9, -8, -7, -2, -1)] <- NA
+
+#NAing for Drinks on typical day
+long_data_gaming$auditc4[long_data_gaming$auditc4 %in% c(-9, -8, -7, -2, -1)] <- NA
+
+#NAing for six or more frequency drinks
+long_data_gaming$auditc5[long_data_gaming$auditc5 %in% c(-9, -8, -7, -2, -1)] <- NA
+
+#NAing for times visited the gp
+long_data_gaming$hl2gp[long_data_gaming$hl2gp %in% c(-9, -7, -2, -1)] <- NA
+
+#NAing for hours of actual sleep
+long_data_gaming$hrs_slph[long_data_gaming$hrs_slph %in% c(-9, -7, -2, -1)] <- NA
+
+#NAing for short warwick-edinburgh mental well-being scale
+
+#NAing for usual minutes vigorous activities
+long_data_gaming$vdmin[long_data_gaming$vdmin %in% c(-8, -7, -2, -1)] <- NA
+
+#NAing for usual minutes walking weekly
+long_data_gaming$vdmin[long_data_gaming$vdmin %in% c(-8, -7, -2, -1)] <- NA
+
+
+#NAing for highest qualifcation gained
+long_data_gaming$hiqual_dv[long_data_gaming$hiqual_dv %in% c(-9, -8)] <- NA
+
+#NAing dyadic adjustment scale - relationship cohesion
+long_data_gaming$scdascoh_dv[long_data_gaming$scdascoh_dv %in% c(-9, -8, -7)] <- NA
+
+#NAing dyadic adjustment scale - relationship satisfaction
+long_data_gaming$scdassat_dv[long_data_gaming$scdassat_dv %in% c(-9, -8, -7)] <- NA
+
+#NAing how often feel lonely
+long_data_gaming$sclonely[long_data_gaming$sclonely %in% c(-9, -8, -7, -2, -1)] <- NA
+
+# Find all variable names containing "m_hcondnew"
+hcondnew_vars <- grep("m_hcondnew", names(long_data_gaming), value = TRUE)
+
+# Replace values -8, -7, -2, -1 with NA across those variables
+for (var in hcondnew_vars) {
+  long_data_gaming[[var]][long_data_gaming[[var]] %in% c(-8, -7, -2, -1)] <- NA
+}
+
+
+long_data_gaming$ethn_dv[long_data_gaming$ethn_dv %in% c(-9)] <- NA
+long_data_gaming$ethn_dv[long_data_gaming$ethn_dv %in% c(97)] <- 18
+long_data_gaming$sex[long_data_gaming$sex %in% c(-9)] <- NA
+long_data_gaming$sclfsat1[long_data_gaming$sclfsat1 %in% c(-9, -8, -7, -2, -1)] <- NA
+ long_data_gaming <- rename(long_data_gaming, no_reported_illness = hcondncode96)
+
+#mental health
+long_data_gaming$hcondncode38[long_data_gaming$hcondncode38 %in% c(-9, -8, -7)] <- NA #depression
+long_data_gaming$hcondncode39[long_data_gaming$hcondncode39 %in% c(-9, -8, -7)] <- NA #psychosis schizophrenia
+long_data_gaming$hcondncode40[long_data_gaming$hcondncode40 %in% c(-9, -8, -7)] <- NA #bipolar disorder
+long_data_gaming$hcondncode41[long_data_gaming$hcondncode41 %in% c(-9, -8, -7)] <- NA #eating disorder
+long_data_gaming$hcondncode77[long_data_gaming$hcondncode77 %in% c(-9, -8, -7)] <- NA #any other condition
+long_data_gaming$hcondncode66[long_data_gaming$hcondncode66 %in% c(-9, -8, -7)] <- NA #phobia
+long_data_gaming$hcondncode67[long_data_gaming$hcondncode67 %in% c(-9, -8, -7)] <- NA #panic attacks
+long_data_gaming$hcondncode68[long_data_gaming$hcondncode68 %in% c(-9, -8, -7)] <- NA #ADHD
+long_data_gaming$hcondncode42[long_data_gaming$hcondncode42 %in% c(-9, -8, -7)] <- NA #PTSD
+long_data_gaming$hcondncode76[long_data_gaming$hcondncode76 %in% c(-9, -8, -7)] <- NA #any other AD
+long_data_gaming$hcondncode75[long_data_gaming$hcondncode75 %in% c(-9, -8, -7)] <- NA #alcohol drug 
+long_data_gaming$hcondncode74[long_data_gaming$hcondncode74 %in% c(-9, -8, -7)] <- NA #seasonal affective disorder
+long_data_gaming$hcondncode73[long_data_gaming$hcondncode73 %in% c(-9, -8, -7)] <- NA #OCD
+long_data_gaming$hcondncode72[long_data_gaming$hcondncode72 %in% c(-9, -8, -7)] <- NA #personality disorder
+long_data_gaming$hcondncode71[long_data_gaming$hcondncode71 %in% c(-9, -8, -7)] <- NA #nervous breakdown
+
+#physical health ###did not include any pregnancy related diagnoses
+long_data_gaming$hcondncode33[long_data_gaming$hcondncode33 %in% c(-9, -8, -7)] <- NA #T1 diabetes
+long_data_gaming$hcondncode34[long_data_gaming$hcondncode34 %in% c(-9, -8, -7)] <- NA #T2 diabetes
+long_data_gaming$hcondncode36[long_data_gaming$hcondncode36 %in% c(-9, -8, -7)] <- NA #Other diabetes
+long_data_gaming$hcondncode27[long_data_gaming$hcondncode27 %in% c(-9, -8, -7)] <- NA #Lung cancer
+long_data_gaming$hcondncode79[long_data_gaming$hcondncode79 %in% c(-9, -8, -7)] <- NA #Blood / bone marrow cancer
+long_data_gaming$hcondncode26[long_data_gaming$hcondncode26 %in% c(-9, -8, -7)] <- NA #Bowel / colorectal cancer
+long_data_gaming$hcondncode28[long_data_gaming$hcondncode28 %in% c(-9, -8, -7)] <- NA #breast cancer
+long_data_gaming$hcondncode30[long_data_gaming$hcondncode30 %in% c(-9, -8, -7)] <- NA #liver cancer
+long_data_gaming$hcondncode32[long_data_gaming$hcondncode32 %in% c(-9, -8, -7)] <- NA #other cancer
+long_data_gaming$hcondncode29[long_data_gaming$hcondncode29 %in% c(-9, -8, -7)] <- NA #prostate cancer
+long_data_gaming$hcondncode31[long_data_gaming$hcondncode31 %in% c(-9, -8, -7)] <- NA #skin cancer
+long_data_gaming$hcondncode23[long_data_gaming$hcondncode23 %in% c(-9, -8, -7)] <- NA #osteoarthritis
+long_data_gaming$hcondncode24[long_data_gaming$hcondncode24 %in% c(-9, -8, -7)] <- NA #rheumatoid arthritis
+long_data_gaming$hcondncode25[long_data_gaming$hcondncode25 %in% c(-9, -8, -7)] <- NA #other arthritis
+long_data_gaming$hcondncode82[long_data_gaming$hcondncode82 %in% c(-9, -8, -7)] <- NA #motor neurone disease
+long_data_gaming$hcondncode19[long_data_gaming$hcondncode19 %in% c(-9, -8, -7)] <- NA #multiple sclerosis
+long_data_gaming$hcondncode15[long_data_gaming$hcondncode15 %in% c(-9, -8, -7)] <- NA #epilepsy
+long_data_gaming$hcondncode81[long_data_gaming$hcondncode81 %in% c(-9, -8, -7)] <- NA #parkinsons
+long_data_gaming$hcondncode16[long_data_gaming$hcondncode16 %in% c(-9, -8, -7)] <- NA #high blood pressure
+long_data_gaming$hcondncode3[long_data_gaming$hcondncode3 %in% c(-9, -8, -7)] <- NA #congestive heart failure
+long_data_gaming$hcondncode4[long_data_gaming$hcondncode4 %in% c(-9, -8, -7)] <- NA #coronary heart disease
+long_data_gaming$hcondncode5[long_data_gaming$hcondncode5 %in% c(-9, -8, -7)] <- NA #angina
+long_data_gaming$hcondncode6[long_data_gaming$hcondncode6 %in% c(-9, -8, -7)] <- NA #heart attack or myocardial infarction
+long_data_gaming$hcondncode7[long_data_gaming$hcondncode7 %in% c(-9, -8, -7)] <- NA #stroke
+long_data_gaming$hcondncode80[long_data_gaming$hcondncode80 %in% c(-9, -8, -7)] <- NA #CKD
+long_data_gaming$hcondncode8[long_data_gaming$hcondncode8 %in% c(-9, -8, -7)] <- NA #emphysema
+long_data_gaming$no_reported_illness[long_data_gaming$no_reported_illness %in% c(-9, -8, -7)] <- NA #no reported illnesses
+long_data_gaming$hcondncode97[long_data_gaming$hcondncode97 %in% c(-9, -8, -7)] <- NA #other long standing / chronic condition
+long_data_gaming$hcondncode89[long_data_gaming$hcondncode89 %in% c(-8, -7)] <- NA
+long_data_gaming$gaming[long_data_gaming$gaming %in% c(-8, -7, -2, -1)] <- NA
