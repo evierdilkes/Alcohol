@@ -595,3 +595,31 @@ weights=indinus_lw)
 model3_metabolic <- glmmTMB(GHQ_total ~ wave * AL_metabolic + sex + confage + ethn_dv + b_medcnjd +
 b_health + b_hiqual_dv + as.factor(alcohol_risk) +  smoker + urban_dv + scsf1 + wday + wkvege + hhsize + employ.x + income.x + g_slp_qual + (wave | pidp), data = subset_3,
 weights=indinus_lw)
+
+subset_3$wave_b <- subset_3$wave
+subset_3$wave_b[subset_3$wave_b == 7] <- 1
+subset_3$wave_b[subset_3$wave_b == 9] <- 2
+subset_3$wave_b[subset_3$wave_b == 11] <- 3
+subset_3$wave_b[subset_3$wave_b == 12] <- 4
+subset_3$wave_b[subset_3$wave_b == 13] <- 5
+
+
+subset_3$srh_0 <- subset_3$scsf1 - 1
+subset_3$sex_0 <- subset_3$sex - 1
+subset_3$ethn_dv_0 <- subset_3$ethn_dv - 1
+subset_3$smoker[subset_3$smoker == 2] <- 0
+subset_3$urban_dv_0 <- subset_3$urban_dv - 1
+subset_4 <- subset_3 %>%
+    mutate(wday = 7 - wday)
+table(subset_4$wday)
+subset_3 <- subset_4
+subset_4 <- subset_3  %>%
+    mutate(wkvege = 3 - wkvege)
+table(subset_4$wkvege)
+subset_3 <- subset_4
+subset_4 <- subset_3  %>%
+    mutate(income.x = 6 - income.x)
+table(subset_4$income.x)
+subset_3 <- subset_4
+
+
