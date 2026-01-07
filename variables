@@ -308,14 +308,6 @@ long_data_ALNA_all <- merge(long_data_ALNA_all,
 data_long_AL_new$b_scghq1_dv[data_long_AL_new$b_scghq1_dv %in% c(-9,-8)] <- NA ###IMPORTANT BASELINE GHQ
 
 
-data_subset <- data_subset %>%
-  mutate(income = cut(
-    income,
-    breaks = c(-Inf, 0, 1000, 2000, 3000, 4000, 6000, 10000, Inf),
-    right = FALSE,
-    labels = c("<0", "0–999", "1000–1999", "2000–2999", "3000–3999",
-               "4000–5999", "6000–9999", "10000+")
-  ))
 
 data_subset <- data_subset %>%
   mutate(income = case_when(
@@ -328,6 +320,9 @@ data_subset <- data_subset %>%
     income <  0    ~ 6,
     TRUE ~ NA_real_
   ))
+
+data_subset <- data_subset %>%
+    mutate(income.x = 6 - income.x)
 
 
 library(dplyr)
@@ -515,7 +510,6 @@ data_long_AL_new <- data_long_AL_new %>%
     )
   )
 
-
 #####alcohol stuff
 data_subset <- data_long_AL_new[data_long_AL_new$wave %in% c(7, 9, 11, 12, 13), ]
 data_subset$auditc3_binary <- data_subset$auditc3
@@ -530,3 +524,74 @@ library(dplyr)
 
 data_subset <- data_subset %>%
   filter(!is.na(alcohol_risk))
+
+data_subset$b_hiqual_dv[data_subset$b_hiqual_dv == 9] <- 0
+data_subset$b_hiqual_dv[data_subset$b_hiqual_dv == -8] <- NA
+data_subset$b_health[data_subset$b_health == -1] <- NA
+data_subset$employ[data_subset$employ == 2] <- 0
+data_subset$smoker[data_subset$smoker == 2] <- 0
+data_subset$wkvege[data_subset$wkvege == 1] <- 0
+data_subset$wkvege[data_subset$wkvege == 2] <- 1
+data_subset$wkvege[data_subset$wkvege == 3] <- 2
+data_subset$wkvege[data_subset$wkvege == 4] <- 3
+data_subset$b_health[data_subset$b_health == 2] <- 0
+data_subset$b_medcnjd[data_subset$b_medcnjd == 2] <- 0
+
+###sleep at baseline 
+sleep <- select(g_indresp, c(pidp, g_slp_qual, g_hrs_slph))
+subset_3 <- merge(sleep, subset_2, by = "pidp")
+subset_3$g_slp_qual[subset_3$g_slp_qual %in% c(-7, -1)] <- NA
+subset_3$g_slp_qual <- subset_3$g_slp_qual - 1
+subset_3 <- subset_3 %>%
+filter(!is.na(g_slp_qual))
+
+
+model1_AL <- glmmTMB(GHQ_total ~ wave * AL_z + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model2_AL <- glmmTMB(GHQ_total ~ wave * AL_z + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model3_AL <- glmmTMB(GHQ_total ~ wave * AL_z + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) +  smoker + urban_dv + scsf1 + wday + wkvege + hhsize + employ.x + income.x + g_slp_qual + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+
+model1_neuroendocrine <- glmmTMB(GHQ_total ~ wave * AL_neuroendocrine + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model2_neuroendocrine <- glmmTMB(GHQ_total ~ wave * AL_neuroendocrine + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model3_neuroendocrine <- glmmTMB(GHQ_total ~ wave * AL_neuroendocrine + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) +  smoker + urban_dv + scsf1 + wday + wkvege + hhsize + employ.x + income.x + g_slp_qual + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+
+model1_cardio <- glmmTMB(GHQ_total ~ wave * AL_cardio + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model2_cardio <- glmmTMB(GHQ_total ~ wave * AL_cardio + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model3_cardio <- glmmTMB(GHQ_total ~ wave * AL_cardio + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) +  smoker + urban_dv + scsf1 + wday + wkvege + hhsize + employ.x + income.x + g_slp_qual + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+
+model1_inflammation <- glmmTMB(GHQ_total ~ wave * AL_inflammation + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model2_inflammation <- glmmTMB(GHQ_total ~ wave * AL_inflammation + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model3_inflammation <- glmmTMB(GHQ_total ~ wave * AL_inflammation + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) +  smoker + urban_dv + scsf1 + wday + wkvege + hhsize + employ.x + income.x + g_slp_qual + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+
+model1_metabolic <- glmmTMB(GHQ_total ~ wave * AL_metabolic + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model2_metabolic <- glmmTMB(GHQ_total ~ wave * AL_metabolic + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) + (wave | pidp), data = subset_3,
+weights=indinus_lw)
+model3_metabolic <- glmmTMB(GHQ_total ~ wave * AL_metabolic + sex + confage + ethn_dv + b_medcnjd +
+b_health + b_hiqual_dv + as.factor(alcohol_risk) +  smoker + urban_dv + scsf1 + wday + wkvege + hhsize + employ.x + income.x + g_slp_qual + (wave | pidp), data = subset_3,
+weights=indinus_lw)
