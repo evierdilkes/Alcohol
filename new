@@ -1,0 +1,965 @@
+###IMPORTING INTO R
+
+library(haven)
+h_indresp <- read_sav("~/h_indresp.sav")
+b_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/b_indresp.sav")
+xlabblood_ns <- read_sav("~/xlabblood_ns.sav")
+c_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/c_indresp.sav")
+f_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/f_indresp.sav")
+g_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/g_indresp.sav")
+i_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/i_indresp.sav")
+j_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/j_indresp.sav")
+k_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/k_indresp.sav")
+l_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/l_indresp.sav")
+m_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/m_indresp.sav")
+n_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/n_indresp.sav")
+o_indresp <- read_sav("~/UKDA-6614-spss/spss/spss28/ukhls/o_indresp.sav")
+xindresp_ns <- read_sav("~/xindresp_ns.sav")
+b_indresp_ns <- read_sav("~/b_indresp_ns.sav")
+
+
+######## WAVE 2/3 VARIABLES
+vars_c <- c(
+  "pidp",
+  "c_sexuor")
+
+
+######## WAVE 6 VARIABLES
+vars_f <- c(
+  "pidp",
+  "f_closenum", "f_employ", "f_fimngrs_dv", "f_scghqa", "f_scghqb", "f_scghqc", "f_scghqd",
+  "f_scghqe", "f_scghqf", "f_scghqg", "f_scghqh", "f_scghqi", "f_scghqj", "f_scghqk", "f_scghql",
+  "f_scsf1", "f_scsf2a", "f_scsf2b", "f_scsf3a", "f_scsf3b", "f_scsf4a", "f_scsf4b",
+  "f_scsf5", "f_scsf6a", "f_scsf6b", "f_scsf6c", "f_scsf7", "f_sex", "f_sf12mcs_dv",
+  "f_smoker", "f_ethn_dv", "f_urban_dv", "f_indinus_lw", "f_nbrsnci_dv", "f_jbsec", 
+"f_scopngbha", "f_mastat_dv"
+)
+
+######## WAVE 7 VARIABLES
+vars_g <- c(
+  "pidp",
+  "g_auditc1", "g_auditc2", "g_auditc3", "g_auditc4", "g_auditc5",
+  "g_employ", "g_fimngrs_dv", "g_hl2gp", "g_hrs_slph",
+  "g_scghqa", "g_scghqb", "g_scghqc", "g_scghqd", "g_scghqe", "g_scghqf", "g_scghqg",
+  "g_scghqh", "g_scghqi", "g_scghqj", "g_scghqk", "g_scghql",
+  "g_scsf1", "g_scsf2a", "g_scsf2b", "g_scsf3a", "g_scsf3b", "g_scsf4a", "g_scsf4b",
+  "g_scsf5", "g_scsf6a", "g_scsf6b", "g_scsf6c", "g_scsf7",
+  "g_sex", "g_sf12mcs_dv", "g_smoker", "g_swemwbs_dv", "g_vdmin", "g_wwmin",
+  "g_ypnetcht", "g_hcond1","g_hcond10","g_hcond11","g_hcond12","g_hcond13",
+"g_hcond14","g_hcond15","g_hcond16","g_hcond18","g_hcond19","g_hcond2","g_hcond3",
+"g_hcond4","g_hcond5","g_hcond6","g_hcond7","g_hcond8","g_hcond9","g_hcond96",
+ "g_ethn_dv", "g_urban_dv", "g_wkfruit",   "g_agegr10_dv", "g_agegr5_dv", 
+"g_hhsize", "g_hiqual_dv", "g_indinus_lw","g_scdascoh_dv", "g_scdassat_dv", "g_sclfsat1", 
+"g_mdmin", "g_mday", "g_wday", "g_slp_qual", "g_wkvege", 
+"g_mastat_dv"
+)
+
+######## WAVE 8 VARIABLES
+vars_h <- c(
+  "pidp",
+  "h_employ", "h_fimngrs_dv", "h_hl2gp", 
+  "h_scghqa", "h_scghqb", "h_scghqc", "h_scghqd", "h_scghqe", "h_scghqf", "h_scghqg",
+  "h_scghqh", "h_scghqi", "h_scghqj", "h_scghqk", "h_scghql",
+  "h_scsf1", "h_scsf2a", "h_scsf2b", "h_scsf3a", "h_scsf3b", "h_scsf4a", "h_scsf4b",
+  "h_scsf5", "h_scsf6a", "h_scsf6b", "h_scsf6c", "h_scsf7", 
+  "h_sex", "h_sf12mcs_dv", "h_smoker",
+  "h_ypnetcht", "h_hcond1","h_hcond10","h_hcond11","h_hcond12","h_hcond13",
+"h_hcond14","h_hcond15","h_hcond16","h_hcond18","h_hcond19","h_hcond2","h_hcond3",
+"h_hcond4","h_hcond5","h_hcond6","h_hcond7","h_hcond8","h_hcond9","h_hcond96",
+  "h_ethn_dv", "h_urban_dv", "h_agegr10_dv", "h_agegr5_dv", "h_hhsize", "h_hiqual_dv", "h_indinus_lw", 
+"h_jbsec", "h_mastat_dv"
+)
+
+######## WAVE 9 VARIABLES
+vars_i <- c(
+  "pidp",
+  "i_auditc1", "i_auditc2", "i_auditc3", "i_auditc4", "i_auditc5", "i_closenum",
+  "i_employ", "i_fimngrs_dv", "i_hl2gp",
+  "i_scghqa", "i_scghqb", "i_scghqc", "i_scghqd", "i_scghqe", "i_scghqf", "i_scghqg",
+  "i_scghqh", "i_scghqi", "i_scghqj", "i_scghqk", "i_scghql",
+  "i_scsf1", "i_scsf2a", "i_scsf2b", "i_scsf3a", "i_scsf3b", "i_scsf4a", "i_scsf4b",
+  "i_scsf5", "i_scsf6a", "i_scsf6b", "i_scsf6c", "i_scsf7",
+  "i_sex", "i_sf12mcs_dv", "i_smoker", "i_vdmin", "i_wwmin",
+ "i_hcond1","i_hcond10","i_hcond11","i_hcond12","i_hcond13",
+"i_hcond14","i_hcond15","i_hcond16","i_hcond18","i_hcond19","i_hcond2","i_hcond3",
+"i_hcond4","i_hcond5","i_hcond6","i_hcond7","i_hcond8","i_hcond9","i_hcond96",
+  "i_ethn_dv", "i_urban_dv",
+  "i_agegr10_dv", "i_agegr5_dv", "i_hhsize", "i_hiqual_dv",
+  "i_indinus_lw", "i_scdascoh_dv", "i_scdassat_dv", "i_sclfsat1", "i_sclonely", 
+"i_mdmin", "i_mday", "i_wday", "i_nbrsnci_dv", "i_sclackcom", "i_scisolate", 
+"i_wkvege", "i_scopngbha", "i_mastat_dv"
+)
+
+
+######## WAVE 10 VARIABLES
+vars_j <- c(
+  "pidp",
+  "j_employ", "j_fimngrs_dv", "j_hl2gp", "j_hrs_slph",
+  "j_scghqa", "j_scghqb", "j_scghqc", "j_scghqd", "j_scghqe", "j_scghqf", "j_scghqg",
+  "j_scghqh", "j_scghqi", "j_scghqj", "j_scghqk", "j_scghql",
+  "j_scsf1", "j_scsf2a", "j_scsf2b", "j_scsf3a", "j_scsf3b", "j_scsf4a", "j_scsf4b",
+  "j_scsf5", "j_scsf6a", "j_scsf6b", "j_scsf6c", "j_scsf7",
+"j_hcondncode1",
+"j_hcondncode10",
+"j_hcondncode11",
+"j_hcondncode12",
+"j_hcondncode15",
+"j_hcondncode16",
+"j_hcondncode19",
+"j_hcondncode21",
+"j_hcondncode23",
+"j_hcondncode24",
+"j_hcondncode25",
+"j_hcondncode26",
+"j_hcondncode27",
+"j_hcondncode28",
+"j_hcondncode29",
+"j_hcondncode3",
+"j_hcondncode30",
+"j_hcondncode31",
+"j_hcondncode32",
+"j_hcondncode33",
+"j_hcondncode34",
+"j_hcondncode35",
+"j_hcondncode36",
+"j_hcondncode4",
+"j_hcondncode41",
+"j_hcondncode42",
+"j_hcondncode5",
+"j_hcondncode6",
+"j_hcondncode7",
+"j_hcondncode38",
+"j_hcondncode39", 
+"j_hcondncode40",
+"j_hcondncode8",
+"j_hcondncode96",
+"j_hcondncode97",
+  "j_sex", "j_sf12mcs_dv", "j_smoker", "j_swemwbs_dv", "j_ypnetcht", "j_sclfsat1",
+  "j_ethn_dv", "j_urban_dv", "j_agegr10_dv", "j_agegr5_dv", "j_hhsize", "j_hiqual_dv", "j_indinus_lw", "j_sclackcom", 
+"j_scisolate", "j_sclonely", "j_slp_qual", "j_jbsec", "j_mastat_dv")
+
+######## WAVE 11 VARIABLES
+vars_k <- c("pidp", "k_auditc1", "k_auditc2", "k_auditc3", "k_auditc4", "k_auditc5",
+  "k_employ", "k_fimngrs_dv", "k_hl2gp",
+  "k_scghqa", "k_scghqb", "k_scghqc", "k_scghqd", "k_scghqe", "k_scghqf", "k_scghqg",
+  "k_scghqh", "k_scghqi", "k_scghqj", "k_scghqk", "k_scghql",
+  "k_scsf1", "k_scsf2a", "k_scsf2b", "k_scsf3a", "k_scsf3b", "k_scsf4a", "k_scsf4b",
+  "k_scsf5", "k_scsf6a", "k_scsf6b", "k_scsf6c", "k_scsf7",
+"k_hcondncode1",
+"k_hcondncode10",
+"k_hcondncode11",
+"k_hcondncode12",
+"k_hcondncode15",
+"k_hcondncode16",
+"k_hcondncode19",
+"k_hcondncode21",
+"k_hcondncode23",
+"k_hcondncode24",
+"k_hcondncode25",
+"k_hcondncode26",
+"k_hcondncode27",
+"k_hcondncode28",
+"k_hcondncode29",
+"k_hcondncode3",
+"k_hcondncode30",
+"k_hcondncode31",
+"k_hcondncode32",
+"k_hcondncode33",
+"k_hcondncode34",
+"k_hcondncode35",
+"k_hcondncode36",
+"k_hcondncode4",
+"k_hcondncode41",
+"k_hcondncode42",
+"k_hcondncode5",
+"k_hcondncode6",
+"k_hcondncode7",
+"k_hcondncode38",
+"k_hcondncode39", 
+"k_hcondncode40",
+"k_hcondncode8",
+"k_hcondncode96",
+"k_hcondncode97",
+  "k_sex", "k_sf12mcs_dv", "k_smoker", "k_vdmin", "k_wwmin", "k_ypnetcht",
+  "k_ethn_dv", "k_urban_dv",
+  "k_agegr10_dv", "k_agegr5_dv", "k_hhsize", "k_hiqual_dv",
+  "k_indinus_lw", "k_scdascoh_dv", "k_scdassat_dv", "k_sclfsat1", 
+"k_mdmin", "k_mday", "k_wday", "k_smlook", "k_sclackcom", "k_scisolate", "k_sclonely", 
+"k_wkvege", "k_mastat_dv"
+)
+
+
+######## WAVE 12 VARIABLES
+
+vars_l <- c("pidp", "l_auditc1", "l_auditc2", "l_auditc3", "l_auditc4", "l_auditc5",
+  "l_employ", "l_fimngrs_dv", "l_hl2gp",
+  "l_scghqa", "l_scghqb", "l_scghqc", "l_scghqd", "l_scghqe", "l_scghqf", "l_scghqg",
+  "l_scghqh", "l_scghqi", "l_scghqj", "l_scghqk", "l_scghql",
+  "l_scsf1", "l_scsf2a", "l_scsf2b", "l_scsf3a", "l_scsf3b", "l_scsf4a", "l_scsf4b",
+  "l_scsf5", "l_scsf6a", "l_scsf6b", "l_scsf6c", "l_scsf7", "l_hcondncode1",
+"l_hcondncode10",
+"l_hcondncode11",
+"l_hcondncode12",
+"l_hcondncode15",
+"l_hcondncode16",
+"l_hcondncode19",
+"l_hcondncode21",
+"l_hcondncode23",
+"l_hcondncode24",
+"l_hcondncode25",
+"l_hcondncode26",
+"l_hcondncode27",
+"l_hcondncode28",
+"l_hcondncode29",
+"l_hcondncode3",
+"l_hcondncode30",
+"l_hcondncode31",
+"l_hcondncode32",
+"l_hcondncode33",
+"l_hcondncode34",
+"l_hcondncode35",
+"l_hcondncode36",
+"l_hcondncode4",
+"l_hcondncode41",
+"l_hcondncode42",
+"l_hcondncode5",
+"l_hcondncode6",
+"l_hcondncode7",
+"l_hcondncode38",
+"l_hcondncode39", 
+"l_hcondncode40",
+"l_hcondncode8",
+"l_hcondncode96",
+"l_hcondncode97",
+  "l_sex", "l_sf12mcs_dv", "l_smoker", "l_ypnetcht", "l_sclfsat1",
+  "l_ethn_dv", "l_urban_dv", "l_agegr10_dv", "l_agegr5_dv", "l_hhsize", "l_hiqual_dv",
+  "l_indinus_lw", "l_mdmin", "l_mday", "l_wday", "l_smlook", "l_nbrsnci_dv", 
+"l_sclackcom", "l_scisolate", "l_sclonely", "l_sclfsat3", "l_jbsec", "l_scopngbha", 
+"l_mastat_dv"
+)
+
+######## WAVE 13 VARIABLES
+vars_m <- c(
+  "pidp",
+  "m_auditc1", "m_auditc2", "m_auditc3", "m_auditc4", "m_auditc5",
+  "m_employ", "m_fimngrs_dv", "m_hl2gp",
+  "m_scghqa", "m_scghqb", "m_scghqc", "m_scghqd", "m_scghqe", "m_scghqf", "m_scghqg",
+  "m_scghqh", "m_scghqi", "m_scghqj", "m_scghqk", "m_scghql",
+  "m_scsf1", "m_scsf2a", "m_scsf2b", "m_scsf3a", "m_scsf3b", "m_scsf4a", "m_scsf4b",
+  "m_scsf5", "m_scsf6a", "m_scsf6b", "m_scsf6c", "m_scsf7","m_hcondncode1",
+"m_hcondncode10",
+"m_hcondncode11",
+"m_hcondncode12",
+"m_hcondncode15",
+"m_hcondncode16",
+"m_hcondncode19",
+"m_hcondncode21",
+"m_hcondncode23",
+"m_hcondncode24",
+"m_hcondncode25",
+"m_hcondncode26",
+"m_hcondncode27",
+"m_hcondncode28",
+"m_hcondncode29",
+"m_hcondncode3",
+"m_hcondncode30",
+"m_hcondncode31",
+"m_hcondncode32",
+"m_hcondncode33",
+"m_hcondncode34",
+"m_hcondncode35",
+"m_hcondncode36",
+"m_hcondncode4",
+"m_hcondncode41",
+"m_hcondncode42",
+"m_hcondncode5",
+"m_hcondncode6",
+"m_hcondncode7",
+"m_hcondncode38",
+"m_hcondncode39", 
+"m_hcondncode40",
+"m_hcondncode8",
+"m_hcondncode96",
+"m_hcondncode97",
+  "m_sex", "m_sf12mcs_dv", "m_smoker", "m_vdmin", "m_wwmin", "m_ypnetcht",
+  "m_ethn_dv", "m_urban_dv", 
+  "m_agegr10_dv", "m_agegr5_dv", "m_hhsize", "m_hiqual_dv",
+  "m_indinus_lw", "m_scdascoh_dv", "m_scdassat_dv", "m_sclfsat1", "m_mdmin", "m_mday", "m_wday",
+"m_smlook", "m_sclackcom", "m_scisolate", "m_sclonely", "m_slp_qual", "m_hrs_slph", 
+"m_wkvege", "m_sclfsat3", "m_mastat_dv"
+)
+
+######## WAVE 14 VARIABLES
+vars_n <- c(
+  "pidp",
+  "n_employ", "n_fimngrs_dv", "n_hl2gp",
+  "n_scghqa", "n_scghqb", "n_scghqc", "n_scghqd", "n_scghqe", "n_scghqf", "n_scghqg",
+  "n_scghqh", "n_scghqi", "n_scghqj", "n_scghqk", "n_scghql", "n_sclackcom", "n_scisolate", 
+"n_sclonely", "n_sclfsat3", "n_jbsec", "n_mastat_dv",
+  "n_scsf1", "n_scsf2a", "n_scsf2b", "n_scsf3a", "n_scsf3b", "n_scsf4a", "n_scsf4b",
+  "n_scsf5", "n_scsf6a", "n_scsf6b", "n_scsf6c", "n_scsf7",
+"n_hcondncode1",
+"n_hcondncode10",
+"n_hcondncode11",
+"n_hcondncode12",
+"n_hcondncode15",
+"n_hcondncode16",
+"n_hcondncode19",
+"n_hcondncode21",
+"n_hcondncode23",
+"n_hcondncode24",
+"n_hcondncode25",
+"n_hcondncode26",
+"n_hcondncode27",
+"n_hcondncode28",
+"n_hcondncode29",
+"n_hcondncode3",
+"n_hcondncode30",
+"n_hcondncode31",
+"n_hcondncode32",
+"n_hcondncode33",
+"n_hcondncode34",
+"n_hcondncode35",
+"n_hcondncode36",
+"n_hcondncode39",
+"n_hcondncode4",
+"n_hcondncode40",
+"n_hcondncode41",
+"n_hcondncode42",
+"n_hcondncode5",
+"n_hcondncode6",
+"n_hcondncode66",
+"n_hcondncode67",
+"n_hcondncode7",
+"n_hcondncode77",
+"n_hcondncode71",
+"n_hcondncode72",
+"n_hcondncode73",
+"n_hcondncode74",
+"n_hcondncode75",
+"n_hcondncode76",
+"n_hcondncode38",
+"n_hcondncode8",
+"n_hcondncode96",
+"n_hcondncode97",
+"n_hcondncode68",
+"n_hcondncode79",
+"n_hcondncode82",
+"n_hcondncode81",
+"n_hcondncode80",
+"n_hcondncode89", 
+  "n_sex", "n_sf12mcs_dv", "n_smoker",
+  "n_ethn_dv", "n_urban_dv", "n_agegr10_dv", "n_agegr5_dv", "n_hhsize", "n_hiqual_dv",
+  "n_indinus_lw", "n_sclfsat1", "n_smlook"
+)
+
+
+vars_o <- c(
+  "pidp",
+  "o_employ", "o_fimngrs_dv", "o_hl2gp",
+  "o_scghqa", "o_scghqb", "o_scghqc", "o_scghqd", "o_scghqe", "o_scghqf", "o_scghqg",
+  "o_scghqh", "o_scghqi", "o_scghqj", "o_scghqk", "o_scghql", "o_sclackcom", "o_scisolate", 
+"o_sclonely", "o_sclfsat3", "o_mastat_dv",
+  "o_scsf1", "o_scsf2a", "o_scsf2b", "o_scsf3a", "o_scsf3b", "o_scsf4a", "o_scsf4b",
+  "o_scsf5", "o_scsf6a", "o_scsf6b", "o_scsf6c", "o_scsf7",
+"o_hcondncode1",
+"o_hcondncode10",
+"o_hcondncode11",
+"o_hcondncode12",
+"o_hcondncode15",
+"o_hcondncode16",
+"o_hcondncode19",
+"o_hcondncode21",
+"o_hcondncode23",
+"o_hcondncode24",
+"o_hcondncode25",
+"o_hcondncode26",
+"o_hcondncode27",
+"o_hcondncode28",
+"o_hcondncode29",
+"o_hcondncode3",
+"o_hcondncode30",
+"o_hcondncode31",
+"o_hcondncode32",
+"o_hcondncode33",
+"o_hcondncode34",
+"o_hcondncode35",
+"o_hcondncode36",
+"o_hcondncode4",
+"o_hcondncode41",
+"o_hcondncode42",
+"o_hcondncode5",
+"o_hcondncode6",
+"o_hcondncode66",
+"o_hcondncode67",
+"o_hcondncode7",
+"o_hcondncode71",
+"o_hcondncode72",
+"o_hcondncode73",
+"o_hcondncode74",
+"o_hcondncode75",
+"o_hcondncode76",
+"o_hcondncode77",
+"o_hcondncode38",
+"o_hcondncode39", 
+"o_hcondncode40",
+"o_hcondncode8",
+"o_hcondncode96",
+"o_hcondncode97",
+"o_hcondncode68",
+"o_hcondncode79",
+"o_hcondncode82",
+"o_hcondncode81",
+"o_hcondncode80",
+"o_hcondncode89",
+  "o_sex", "o_sf12mcs_dv", 
+  "o_ethn_dv", "o_urban_dv", "o_agegr10_dv", "o_agegr5_dv", "o_hhsize", "o_hiqual_dv",
+  "o_indinus_lw", "o_sclfsat1"
+)
+
+########### CREATING THE DATASETS
+
+
+# Wave 6
+wave_6 <- f_indresp[, vars_f]
+
+# Wave 7
+wave_7 <- g_indresp[, vars_g]
+
+# Wave 8 (h_indresp)
+wave_8 <- h_indresp[, vars_h]
+
+# Wave 9
+wave_9 <- i_indresp[, vars_i]
+
+# Wave 10
+wave_10 <- j_indresp[, vars_j]
+
+# Wave 11
+wave_11 <- k_indresp[, vars_k]
+
+# Wave 12
+wave_12 <- l_indresp[, vars_l]
+
+# Wave 13
+wave_13 <- m_indresp[, vars_m]
+
+# Wave 14
+wave_14 <- n_indresp[, vars_n]
+
+# Wave 15
+wave_15 <- o_indresp[, vars_o]
+
+
+######### add wave number to each wave
+
+wave_6$wave <- 6
+wave_7$wave <- 7
+wave_8$wave <- 8
+wave_9$wave <- 9
+wave_10$wave <- 10
+wave_11$wave <- 11
+wave_12$wave <- 12
+wave_13$wave <- 13
+wave_14$wave <- 14
+wave_15$wave <- 15
+
+library(dplyr)
+library(stringr)
+
+# Function to remove wave prefix (e.g., f_, g_, h_) from all columns except 'pidp' and 'wave'
+clean_names <- function(df) {
+  names(df) <- ifelse(
+    names(df) %in% c("pidp", "wave"),
+    names(df),
+    str_replace(names(df), "^[a-zA-Z]_+", "")
+  )
+  return(df)
+}
+
+# Apply to all wave datasets
+wave_6  <- clean_names(wave_6)
+wave_7  <- clean_names(wave_7)
+wave_8  <- clean_names(wave_8)
+wave_9  <- clean_names(wave_9)
+wave_10 <- clean_names(wave_10)
+wave_11 <- clean_names(wave_11)
+wave_12 <- clean_names(wave_12)
+wave_13 <- clean_names(wave_13)
+wave_14 <- clean_names(wave_14)
+wave_15 <- clean_names(wave_15)
+
+
+# Now bind into long format
+long_data <- bind_rows(
+  wave_6, wave_7, wave_8, wave_9, wave_10,
+  wave_11, wave_12, wave_13, wave_14, wave_15
+)
+
+
+# Reorder columns so 'pidp' and 'wave' come first
+long_data <- long_data %>%
+  select(pidp, wave, everything())
+
+#### NAing for close number of friends
+
+#inapplicable	-8
+#proxy	-7
+#refusal	-2
+#don't know	-1
+
+long_data$closenum[long_data$closenum == -10] <- NA
+long_data$closenum[long_data$closenum == -9] <- NA
+long_data$closenum[long_data$closenum == -8] <- NA
+long_data$closenum[long_data$closenum == -7] <- NA
+long_data$closenum[long_data$closenum == -2] <- NA
+long_data$closenum[long_data$closenum == -1] <- NA
+
+
+#### NAing for employment
+long_data$employ[long_data$employ == -9] <- NA
+long_data$employ[long_data$employ == -8] <- NA
+long_data$employ[long_data$employ == -7] <- NA
+long_data$employ[long_data$employ == -2] <- NA
+long_data$employ[long_data$employ == -1] <- NA
+
+#### NAing for monthly personal income
+long_data$fimngrs_dv[long_data$fimngrs_dv == -9] <- NA
+long_data$fimngrs_dv[long_data$fimngrs_dv == -8] <- NA
+long_data$fimngrs_dv[long_data$fimngrs_dv == -2] <- NA
+long_data$fimngrs_dv[long_data$fimngrs_dv == -1] <- NA
+
+
+#### NAing for GHQ: concentration
+long_data$scghqa[long_data$scghqa == -9] <- NA
+long_data$scghqa[long_data$scghqa == -8] <- NA
+long_data$scghqa[long_data$scghqa == -7] <- NA
+long_data$scghqa[long_data$scghqa == -2] <- NA
+long_data$scghqa[long_data$scghqa == -1] <- NA
+
+#### NAing for GHQ: loss of sleep
+long_data$scghqb[long_data$scghqb == -9] <- NA
+long_data$scghqb[long_data$scghqb == -8] <- NA
+long_data$scghqb[long_data$scghqb == -7] <- NA
+long_data$scghqb[long_data$scghqb == -2] <- NA
+long_data$scghqb[long_data$scghqb == -1] <- NA
+
+#### NAing for GHQ: playing a useful role
+long_data$scghqc[long_data$scghqc == -9] <- NA
+long_data$scghqc[long_data$scghqc == -8] <- NA
+long_data$scghqc[long_data$scghqc == -7] <- NA
+long_data$scghqc[long_data$scghqc == -2] <- NA
+long_data$scghqc[long_data$scghqc == -1] <- NA
+
+
+#### NAing for GHQ: capable of making decisions
+long_data$scghqd[long_data$scghqd == -9] <- NA
+long_data$scghqd[long_data$scghqd == -8] <- NA
+long_data$scghqd[long_data$scghqd == -7] <- NA
+long_data$scghqd[long_data$scghqd == -2] <- NA
+long_data$scghqd[long_data$scghqd == -1] <- NA
+
+#### NAing for GHQ: constantly under strain
+long_data$scghqe[long_data$scghqe == -9] <- NA
+long_data$scghqe[long_data$scghqe == -8] <- NA
+long_data$scghqe[long_data$scghqe == -7] <- NA
+long_data$scghqe[long_data$scghqe == -2] <- NA
+long_data$scghqe[long_data$scghqe == -1] <- NA
+
+#### NAing for GHQ: problems overcoming difficulties
+long_data$scghqf[long_data$scghqf == -9] <- NA
+long_data$scghqf[long_data$scghqf == -8] <- NA
+long_data$scghqf[long_data$scghqf == -7] <- NA
+long_data$scghqf[long_data$scghqf == -2] <- NA
+long_data$scghqf[long_data$scghqf == -1] <- NA
+
+#### NAing for GHQ: enjoy day-to-day activities
+long_data$scghqg[long_data$scghqg == -9] <- NA
+long_data$scghqg[long_data$scghqg == -8] <- NA
+long_data$scghqg[long_data$scghqg == -7] <- NA
+long_data$scghqg[long_data$scghqg == -2] <- NA
+long_data$scghqg[long_data$scghqg == -1] <- NA
+
+#### NAing for GHQ: ability to face problems
+long_data$scghqh[long_data$scghqh == -9] <- NA
+long_data$scghqh[long_data$scghqh == -8] <- NA
+long_data$scghqh[long_data$scghqh == -7] <- NA
+long_data$scghqh[long_data$scghqh == -2] <- NA
+long_data$scghqh[long_data$scghqh == -1] <- NA
+
+#### NAing for GHQ: unhappy or depressed
+long_data$scghqi[long_data$scghqi == -9] <- NA
+long_data$scghqi[long_data$scghqi == -8] <- NA
+long_data$scghqi[long_data$scghqi == -7] <- NA
+long_data$scghqi[long_data$scghqi == -2] <- NA
+long_data$scghqi[long_data$scghqi == -1] <- NA
+
+#### NAing for GHQ: losing confidence
+long_data$scghqj[long_data$scghqj == -9] <- NA
+long_data$scghqj[long_data$scghqj == -8] <- NA
+long_data$scghqj[long_data$scghqj == -7] <- NA
+long_data$scghqj[long_data$scghqj == -2] <- NA
+long_data$scghqj[long_data$scghqj == -1] <- NA
+
+#### NAing for GHQ: believe worthless
+long_data$scghqk[long_data$scghqk == -9] <- NA
+long_data$scghqk[long_data$scghqk == -8] <- NA
+long_data$scghqk[long_data$scghqk == -7] <- NA
+long_data$scghqk[long_data$scghqk == -2] <- NA
+long_data$scghqk[long_data$scghqk == -1] <- NA
+
+#### NAing for GHQ: general happiness
+long_data$scghql[long_data$scghql == -9] <- NA
+long_data$scghql[long_data$scghql == -8] <- NA
+long_data$scghql[long_data$scghql == -7] <- NA
+long_data$scghql[long_data$scghql == -2] <- NA
+long_data$scghql[long_data$scghql == -1] <- NA
+
+#### NAing for self-rated health
+long_data$scsf1[long_data$scsf1 == -9] <- NA
+long_data$scsf1[long_data$scsf1 == -8] <- NA
+long_data$scsf1[long_data$scsf1 == -7] <- NA
+long_data$scsf1[long_data$scsf1 == -2] <- NA
+long_data$scsf1[long_data$scsf1 == -1] <- NA
+
+#### NAing for Health limits moderate activities
+long_data$scsf2a[long_data$scsf2a == -10] <- NA
+long_data$scsf2a[long_data$scsf2a == -9] <- NA
+long_data$scsf2a[long_data$scsf2a == -8] <- NA
+long_data$scsf2a[long_data$scsf2a == -7] <- NA
+long_data$scsf2a[long_data$scsf2a == -2] <- NA
+long_data$scsf2a[long_data$scsf2a == -1] <- NA
+
+long_data$GHQ_total <- long_data$scghqa + long_data$scghqb + long_data$scghqc + long_data$scghqd + long_data$scghqe + long_data$scghqf + long_data$scghqg + long_data$scghqh + long_data$scghqi + long_data$scghqj + long_data$scghqk + long_data$scghql
+long_data$GHQ_total <- long_data$GHQ_total - 12
+
+#### NAing for Health limits flights of stairs
+long_data$scsf2b[long_data$scsf2b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for physical health limits amount of work
+long_data$scsf3a[long_data$scsf3a %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for physical health limits type of work
+long_data$scsf3b[long_data$scsf3b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for mental health meant accomplished less
+long_data$scsf4a[long_data$scsf4a %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for mental health meant worked less carefully
+long_data$scsf4b[long_data$scsf4b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for pain interfered with work
+long_data$scsf5[long_data$scsf5 %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for felt calm and peaceful 
+long_data$scsf6a[long_data$scsf6a %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for had a lot of energy
+long_data$scsf6b[long_data$scsf6b %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for felt downhearted and depressed
+long_data$scsf6c[long_data$scsf6c %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for physical or mental health interfered with social life
+long_data$scsf7[long_data$scsf7 %in% c(-10, -9, -8, -7, -2, -1)] <- NA
+
+#### NAing for SF-12 Mental Compoenent Summary
+long_data$sf12mcs_dv[long_data$sf12mcs_dv %in% c(-9, -8, -7)] <- NA
+
+#NAing for smoking
+long_data$smoker[long_data$smoker %in% c(-10, -9, -7, -2, -1)] <- NA
+
+#NAing for ethnicity
+long_data$smoker[long_data$smoker == -9] <- NA
+
+#NAing for urban or rural
+long_data$urban_dv[long_data$urban_dv == -9] <- NA
+
+#NAing for Past 12 months alcoholic drink	
+long_data$auditc1[long_data$auditc1 %in% c(-9, -8, -7, -2, -1)] <- NA
+
+#NAing for Alcohol frequency past 12 months
+long_data$auditc3[long_data$auditc3 %in% c(-9, -8, -7, -2, -1)] <- NA
+
+#NAing for Drinks on typical day
+long_data$auditc4[long_data$auditc4 %in% c(-9, -8, -7, -2, -1)] <- NA
+
+#NAing for six or more frequency drinks
+long_data$auditc5[long_data$auditc5 %in% c(-9, -8, -7, -2, -1)] <- NA
+
+#NAing for times visited the gp
+long_data$hl2gp[long_data$hl2gp %in% c(-9, -7, -2, -1)] <- NA
+
+#NAing for hours of actual sleep
+long_data$hrs_slph[long_data$hrs_slph %in% c(-9, -7, -2, -1)] <- NA
+
+#NAing for short warwick-edinburgh mental well-being scale
+long_data$swemwbs_dv[long_data$hrs_slph %in% c(-9, -8, -7)] <- NA
+
+#NAing for usual minutes vigorous activities
+long_data$vdmin[long_data$vdmin %in% c(-8, -7, -2, -1)] <- NA
+
+#NAing for usual minutes walking weekly
+long_data$vdmin[long_data$vdmin %in% c(-8, -7, -2, -1)] <- NA
+
+#NAing for fruit per week
+long_data$wkfruit[long_data$wkfruit %in% c(-7, -2, -1)] <- NA
+
+#NAing for highest qualifcation gained
+long_data$hiqual_dv[long_data$hiqual_dv %in% c(-9, -8)] <- NA
+
+#NAing dyadic adjustment scale - relationship cohesion
+long_data$scdascoh_dv[long_data$scdascoh_dv %in% c(-9, -8, -7)] <- NA
+
+#NAing dyadic adjustment scale - relationship satisfaction
+long_data$scdassat_dv[long_data$scdassat_dv %in% c(-9, -8, -7)] <- NA
+
+#NAing how often feel lonely
+long_data$sclonely[long_data$sclonely %in% c(-9, -8, -7, -2, -1)] <- NA
+
+# Find all variable names containing "m_hcondnew"
+hcondnew_vars <- grep("m_hcondnew", names(long_data), value = TRUE)
+
+# Replace values -8, -7, -2, -1 with NA across those variables
+for (var in hcondnew_vars) {
+  long_data[[var]][long_data[[var]] %in% c(-8, -7, -2, -1)] <- NA
+}
+
+#walking per day
+long_data$wday[long_data$wday %in% c(-2,-1)] <- NA
+
+#veggies
+long_data$wkvege[long_data$wkvege %in% c(-2,-1)] <- NA
+
+long_data$ethn_dv[long_data$ethn_dv %in% c(-9)] <- NA
+long_data$ethn_dv[long_data$ethn_dv %in% c(97)] <- 18
+long_data$sex[long_data$sex %in% c(-9)] <- NA
+long_data$sclfsat1[long_data$sclfsat1 %in% c(-9, -8, -7, -2, -1)] <- NA
+ long_data <- rename(long_data, no_reported_illness = hcondncode96)
+
+#mental health
+long_data$hcondncode38[long_data$hcondncode38 %in% c(-9, -8, -7)] <- NA #depression
+long_data$hcondncode39[long_data$hcondncode39 %in% c(-9, -8, -7)] <- NA #psychosis schizophrenia
+long_data$hcondncode40[long_data$hcondncode40 %in% c(-9, -8, -7)] <- NA #bipolar disorder
+long_data$hcondncode41[long_data$hcondncode41 %in% c(-9, -8, -7)] <- NA #eating disorder
+long_data$hcondncode77[long_data$hcondncode77 %in% c(-9, -8, -7)] <- NA #any other condition
+long_data$hcondncode66[long_data$hcondncode66 %in% c(-9, -8, -7)] <- NA #phobia
+long_data$hcondncode67[long_data$hcondncode67 %in% c(-9, -8, -7)] <- NA #panic attacks
+long_data$hcondncode68[long_data$hcondncode68 %in% c(-9, -8, -7)] <- NA #ADHD
+long_data$hcondncode42[long_data$hcondncode42 %in% c(-9, -8, -7)] <- NA #PTSD
+long_data$hcondncode76[long_data$hcondncode76 %in% c(-9, -8, -7)] <- NA #any other AD
+long_data$hcondncode75[long_data$hcondncode75 %in% c(-9, -8, -7)] <- NA #alcohol drug 
+long_data$hcondncode74[long_data$hcondncode74 %in% c(-9, -8, -7)] <- NA #seasonal affective disorder
+long_data$hcondncode73[long_data$hcondncode73 %in% c(-9, -8, -7)] <- NA #OCD
+long_data$hcondncode72[long_data$hcondncode72 %in% c(-9, -8, -7)] <- NA #personality disorder
+long_data$hcondncode71[long_data$hcondncode71 %in% c(-9, -8, -7)] <- NA #nervous breakdown
+
+#physical health ###did not include any pregnancy related diagnoses
+long_data$hcondncode33[long_data$hcondncode33 %in% c(-9, -8, -7)] <- NA #T1 diabetes
+long_data$hcondncode34[long_data$hcondncode34 %in% c(-9, -8, -7)] <- NA #T2 diabetes
+long_data$hcondncode36[long_data$hcondncode36 %in% c(-9, -8, -7)] <- NA #Other diabetes
+long_data$hcondncode27[long_data$hcondncode27 %in% c(-9, -8, -7)] <- NA #Lung cancer
+long_data$hcondncode79[long_data$hcondncode79 %in% c(-9, -8, -7)] <- NA #Blood / bone marrow cancer
+long_data$hcondncode26[long_data$hcondncode26 %in% c(-9, -8, -7)] <- NA #Bowel / colorectal cancer
+long_data$hcondncode28[long_data$hcondncode28 %in% c(-9, -8, -7)] <- NA #breast cancer
+long_data$hcondncode30[long_data$hcondncode30 %in% c(-9, -8, -7)] <- NA #liver cancer
+long_data$hcondncode32[long_data$hcondncode32 %in% c(-9, -8, -7)] <- NA #other cancer
+long_data$hcondncode29[long_data$hcondncode29 %in% c(-9, -8, -7)] <- NA #prostate cancer
+long_data$hcondncode31[long_data$hcondncode31 %in% c(-9, -8, -7)] <- NA #skin cancer
+long_data$hcondncode23[long_data$hcondncode23 %in% c(-9, -8, -7)] <- NA #osteoarthritis
+long_data$hcondncode24[long_data$hcondncode24 %in% c(-9, -8, -7)] <- NA #rheumatoid arthritis
+long_data$hcondncode25[long_data$hcondncode25 %in% c(-9, -8, -7)] <- NA #other arthritis
+long_data$hcondncode82[long_data$hcondncode82 %in% c(-9, -8, -7)] <- NA #motor neurone disease
+long_data$hcondncode19[long_data$hcondncode19 %in% c(-9, -8, -7)] <- NA #multiple sclerosis
+long_data$hcondncode15[long_data$hcondncode15 %in% c(-9, -8, -7)] <- NA #epilepsy
+long_data$hcondncode81[long_data$hcondncode81 %in% c(-9, -8, -7)] <- NA #parkinsons
+long_data$hcondncode16[long_data$hcondncode16 %in% c(-9, -8, -7)] <- NA #high blood pressure
+long_data$hcondncode3[long_data$hcondncode3 %in% c(-9, -8, -7)] <- NA #congestive heart failure
+long_data$hcondncode4[long_data$hcondncode4 %in% c(-9, -8, -7)] <- NA #coronary heart disease
+long_data$hcondncode5[long_data$hcondncode5 %in% c(-9, -8, -7)] <- NA #angina
+long_data$hcondncode6[long_data$hcondncode6 %in% c(-9, -8, -7)] <- NA #heart attack or myocardial infarction
+long_data$hcondncode7[long_data$hcondncode7 %in% c(-9, -8, -7)] <- NA #stroke
+long_data$hcondncode80[long_data$hcondncode80 %in% c(-9, -8, -7)] <- NA #CKD
+long_data$hcondncode8[long_data$hcondncode8 %in% c(-9, -8, -7)] <- NA #emphysema
+long_data$no_reported_illness[long_data$no_reported_illness %in% c(-9, -8, -7)] <- NA #no reported illnesses
+long_data$hcondncode97[long_data$hcondncode97 %in% c(-9, -8, -7)] <- NA #other long standing / chronic condition
+long_data$hcondncode89[long_data$hcondncode89 %in% c(-8, -7)] <- NA
+
+xlabblood_ns <- xlabblood_ns %>% select(-wave)
+xlabblood_ns$alb[xlabblood_ns$alb %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$alkp[xlabblood_ns$alkp %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$alt[xlabblood_ns$alt %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$apoa1[xlabblood_ns$apoa1 %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$apob[xlabblood_ns$apob %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$apoe[xlabblood_ns$apoe %in% c(-22, -8)] <- NA
+xlabblood_ns$ast[xlabblood_ns$ast %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$chol[xlabblood_ns$chol %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$dheas[xlabblood_ns$dheas %in% c(-41, -32, -22, -9)] <- NA
+xlabblood_ns$ecre[xlabblood_ns$ecre %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$ggt[xlabblood_ns$ggt %in% c(-41, -31, -22, -9)] <- NA
+xlabblood_ns$hba1c[xlabblood_ns$hba1c %in% c(-42, -9)] <- NA
+xlabblood_ns$hdl[xlabblood_ns$hdl %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$hdl[xlabblood_ns$hdl %in% c(-41, -31, -22, -9)] <- NA
+xlabblood_ns$igfi[xlabblood_ns$igfi %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$rtin[xlabblood_ns$rtin %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$shbg[xlabblood_ns$shbg %in% c(-45, -22, -44, -8)] <- NA
+xlabblood_ns$testo[xlabblood_ns$testo %in% c(-41, -31, -22, -9)] <- NA
+xlabblood_ns$trig[xlabblood_ns$trig %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$ure[xlabblood_ns$ure %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$hgb[xlabblood_ns$hgb %in% c(-42, -9)] <- NA
+xlabblood_ns$cfib[xlabblood_ns$cfib %in% c(-43, -22, -9)] <- NA
+xlabblood_ns$uscmg[xlabblood_ns$uscmg %in% c(-41, -22, -9)] <- NA
+xlabblood_ns$cmvavc[xlabblood_ns$cmvavc %in% c(-9, -8)] <- NA
+xlabblood_ns$factorh[xlabblood_ns$factorh %in% c(-41, -31, -22, -9)] <- NA
+
+xindresp_ns2 <- xindresp_ns %>% select(pidp, ompulval, omdiaval, omsysval, estht, medcnj,bmivg5, wtval, confage, nsex, sex_dv, wstval, htval)
+biomarkers <- merge(xlabblood_ns, xindresp_ns2, by = "pidp")
+biomarkers$dheas[biomarkers$dheas == -31] <- NA
+biomarkers$hscrp[biomarkers$hscrp %in% c(-41, -31, -22, -9)] <- NA
+biomarkers$cfib[biomarkers$cfib == -31] <- NA
+biomarkers$omdiaval[biomarkers$omdiaval == -8] <- NA
+biomarkers$omsysval[biomarkers$omsysval == -8] <- NA
+biomarkers$ompulval[biomarkers$ompulval == -8] <- NA
+biomarkers$wtval[biomarkers$wtval == -8] <- NA
+biomarkers$nsex[biomarkers$nsex == -9] <- NA
+biomarkers$wstval[biomarkers$wstval == -8] <- NA
+biomarkers$htval[biomarkers$htval == -8] <- NA
+biomarkers$CRP_clean <- pmin(biomarkers$hscrp, 100)
+biomarkers$trig[biomarkers$trig == 30.5] <- NA
+biomarkers$trig[biomarkers$trig == 31.9] <- NA
+biomarkers$chol[biomarkers$chol == 12.5] <- NA
+biomarkers$TC_HDL_ratio <- biomarkers$chol / biomarkers$hdl
+biomarkers$WHtR <- biomarkers$wstval / biomarkers$htval
+
+#CREATING CREATININE CLEARANCE RATE
+biomarkers$CrCl <- with(biomarkers, {
+# Sex coefficient: 1.23 for men, 1.04 for women
+f <- ifelse(tolower(nsex) %in% c("1"), 1.23, 1.04)
+# Cockcroft–Gault formula
+CrCl <- ((140 - confage) * wtval * f) / ecre
+CrCl
+})
+
+# z-scores
+# Example: baseline biomarker data
+bio_base <- biomarkers[, c("pidp", "omsysval", "omdiaval", "ompulval", "WHtR", "hba1c", "trig", "CRP_clean", "cfib", "rtin", "TC_HDL_ratio", "dheas", "igfi", "CrCl")]
+
+bio_z <- bio_base
+
+vars_bio <- c("omsysval", "omdiaval", "ompulval", "WHtR", "hba1c", "trig", "CRP_clean", "cfib", "rtin", "TC_HDL_ratio", "dheas", "igfi", "CrCl")
+
+bio_z[vars_bio] <- lapply(bio_z[vars_bio], scale)   # mean 0, SD 1
+
+bio_z$dheas   <- -bio_z$dheas
+bio_z$igfi   <- -bio_z$igfi
+bio_z$CrCl   <- -bio_z$CrCl
+
+bio_z$AL_cont <- rowMeans(bio_z[vars_bio], na.rm = TRUE)
+
+# Optional: standardise the AL score itself for easier interpretation
+bio_z$AL_cont_z <- as.numeric(scale(bio_z$AL_cont))
+
+biomarkers_AL <- bio_z[, c("pidp", "AL_cont_z")]
+
+long_data_all <- merge(long_data, biomarkers_AL, by = "pidp", all.x = TRUE)
+
+long_data_ALNA_all <- long_data_all[!is.na(long_data_all$AL_cont_z), ]
+
+
+
+
+#AGE GROUP FOR STRATIFICATION
+age_data <- xindresp_ns[, c("pidp", "confage")]
+long_data_ALNA_all <- merge(long_data_ALNA_all,
+age_data,
+by = "pidp",
+all.x = TRUE)
+
+####ADDING IN EXTRA VARIABLES 
+extra <- select(b_indresp_ns, c(pidp, b_medcnjd, b_fihhmnnet1_dv, b_wkfruit, b_smever, b_health, b_scghqa, b_scghqb, b_scghqc, b_scghqd, b_scghqe, b_scghqf, b_scghqg, b_scghqh, b_scghqi, b_scghqj, b_scghqk, b_urban_dv, b_hiqual_dv, b_scghq1_dv))
+long_data_ALNA_all <- merge(long_data_ALNA_all, extra, by = "pidp")
+
+###IMPORTANT BASELINE GHQ
+long_data_ALNA_all$b_scghq1_dv[long_data_ALNA_all$b_scghq1_dv %in% c(-9,-8)] <- NA 
+
+
+####SUBSETTING TO RELEVANT WAVES ONLY
+data_subset <- long_data_ALNA_all[long_data_ALNA_all$wave %in% c(7, 9, 11, 12, 13), ]
+
+data_subset <- data_subset %>%
+  mutate(fimngrs_dv = case_when(
+    fimngrs_dv >= 6000 ~ 0,
+    fimngrs_dv >= 4000 ~ 1,
+    fimngrs_dv >= 3000 ~ 2,
+    fimngrs_dv >= 2000 ~ 3,
+    fimngrs_dv >= 1000 ~ 4,
+    fimngrs_dv >= 0    ~ 5,
+    fimngrs_dv <  0    ~ 6,
+    TRUE ~ NA_real_
+  ))
+
+
+
+
+#####alcohol stuff
+data_subset$auditc3_binary <- data_subset$auditc3
+data_subset$auditc3_binary[data_subset$auditc3_binary %in% c(1,2,3)] <- 0
+data_subset$auditc3_binary[data_subset$auditc3_binary %in% c(4,5)] <- 1
+data_subset$auditc4_binary <- data_subset$auditc4
+data_subset$auditc4_binary[data_subset$auditc4_binary %in% c(1,2)] <- 0
+data_subset$auditc4_binary[data_subset$auditc4_binary %in% c(3,4,5)] <- 1
+data_subset$alcohol_risk <- data_subset$auditc3_binary + data_subset$auditc4_binary
+
+library(dplyr)
+
+data_subset <- data_subset %>%
+  filter(!is.na(alcohol_risk))
+
+data_subset$b_hiqual_dv[data_subset$b_hiqual_dv == 9] <- 0
+data_subset$b_hiqual_dv[data_subset$b_hiqual_dv == -8] <- NA
+data_subset$b_health[data_subset$b_health == -1] <- NA
+data_subset$employ[data_subset$employ == 2] <- 0
+data_subset$smoker[data_subset$smoker == 2] <- 0
+data_subset$wkvege[data_subset$wkvege == 1] <- 0
+data_subset$wkvege[data_subset$wkvege == 2] <- 1
+data_subset$wkvege[data_subset$wkvege == 3] <- 2
+data_subset$wkvege[data_subset$wkvege == 4] <- 3
+data_subset$b_health[data_subset$b_health == 2] <- 0
+data_subset$b_medcnjd[data_subset$b_medcnjd == 2] <- 0
+
+###sleep at baseline 
+sleep <- select(g_indresp, c(pidp, g_slp_qual, g_hrs_slph))
+subset_3 <- merge(sleep, data_subset, by = "pidp")
+subset_3$g_slp_qual[subset_3$g_slp_qual %in% c(-7, -1)] <- NA
+subset_3$g_slp_qual <- subset_3$g_slp_qual - 1
+subset_3 <- subset_3 %>%
+filter(!is.na(g_slp_qual))
+
+
+
+
+subset_3$wave_b <- subset_3$wave
+subset_3$wave_b[subset_3$wave_b == 7] <- 1
+subset_3$wave_b[subset_3$wave_b == 9] <- 2
+subset_3$wave_b[subset_3$wave_b == 11] <- 3
+subset_3$wave_b[subset_3$wave_b == 12] <- 4
+subset_3$wave_b[subset_3$wave_b == 13] <- 5
+
+
+subset_3$srh_0 <- subset_3$scsf1 - 1
+subset_3$sex_0 <- subset_3$sex - 1
+subset_3$ethn_dv_0 <- subset_3$ethn_dv - 1
+subset_3$smoker[subset_3$smoker == 2] <- 0
+subset_3$urban_dv_0 <- subset_3$urban_dv - 1
+subset_4 <- subset_3 %>%
+    mutate(wday = 7 - wday)
+table(subset_4$wday)
+subset_3 <- subset_4
+subset_4 <- subset_3  %>%
+    mutate(wkvege = 3 - wkvege)
+table(subset_4$wkvege)
+subset_3 <- subset_4
+subset_3 <- subset_4
+
+
+
